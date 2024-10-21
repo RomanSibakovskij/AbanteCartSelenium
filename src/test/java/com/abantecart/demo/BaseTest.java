@@ -17,7 +17,7 @@ public class BaseTest {
         //options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1920,1080"); //this is necessary for CI run, disable once run in IDE and re-enable commented out options
         driver = new ChromeDriver(options);
         driver.manage().window().maximize(); //-> enable this with browser run
-        driver.get("https://bugeater.web.app/list");
+        driver.get("https://demo.abantecart.com");
     }
 
     @AfterEach
