@@ -7,16 +7,27 @@ public class TestMethods extends BaseTest{
 
     //navigate to signup page test method
     protected void navigateToUserSignupPageTest(HomePage homePage){
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
         //homepage web element assert
         isHomePageWebElementDisplayed(homePage);
         //homepage text element assert method
         doesHomePageTextElementMatchExpectations(homePage);
         //click on register/login page icon button
         homePage.clickRegisterLoginPageIconButton();
+        RegisterLoginDashboardPage registerLoginDashboardPage = new RegisterLoginDashboardPage(driver);
+        //register/login dashboard page web element assert
+        isRegisterLoginDashboardPageWebElementDisplayed(registerLoginDashboardPage);
+        //register/login dashboard page text element assert
+        doesRegisterLoginDashboardPageTextMatchExpectations(registerLoginDashboardPage);
+        //general page web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //click 'register' button
+        registerLoginDashboardPage.clickRegisterCardButton();
     }
 
-    //homepage web element assert methods (Header and footer elements share similarities in other pages so those will be reused)
-    protected void isHomePageWebElementDisplayed(HomePage homePage){
+    //general page web element asserts (header and footer elements)
+    protected void isGeneralPageWebElementDisplayed(HomePage homePage){
         //header web elements
         //assert home page logo link is displayed
         assertTrue(homePage.isHomePageLogoLinkDisplayed(), "The homepage logo link isn't displayed");
@@ -47,6 +58,44 @@ public class TestMethods extends BaseTest{
         assertTrue(homePage.isCheckoutLinkDisplayed(), "The checkout link isn't displayed");
         //assert specials button is displayed
         assertTrue(homePage.isSpecialsButtonDisplayed(), "The specials button isn't displayed");
+        //footer web elements
+        //assert newsletter signup title is displayed
+        assertTrue(homePage.isNewsletterSignupTitleDisplayed(), "The newsletter signup title isn't displayed");
+        //assert newsletter signup bar is displayed
+        assertTrue(homePage.isNewsletterSignupBarDisplayed(), "The newsletter signup bar isn't displayed");
+        //assert newsletter signup button is displayed
+        assertTrue(homePage.isNewsletterSignupButtonDisplayed(), "The newsletter signup button isn't displayed");
+        //assert 'art and fashion fuse' title is displayed
+        assertTrue(homePage.isArtAndFashionFuseTitleDisplayed(), "The 'art and fashion fuse' title isn't displayed");
+        //assert top brands link is displayed
+        assertTrue(homePage.isTopBrandsLinkDisplayed(), "The top brands link isn't displayed");
+        //assert discount link is displayed
+        assertTrue(homePage.isDiscountLinkDisplayed(), "The discount link isn't displayed");
+        //assert facebook icon link is displayed
+        assertTrue(homePage.isFacebookIconLinkDisplayed(), "The facebook icon link isn't displayed");
+        //assert twitter icon link is displayed
+        assertTrue(homePage.isTwitterIconLinkDisplayed(), "The twitter icon link isn't displayed");
+        //assert linked-in icon link is displayed
+        assertTrue(homePage.isLinkedInIconLinkDisplayed(), "The linkedin icon link isn't displayed");
+        //assert product column element is displayed
+        assertTrue(homePage.isProductColumnElementDisplayed(), "The product column element isn't displayed");
+        //assert abante footer logo is displayed
+        assertTrue(homePage.isAbanteFooterLogoDisplayed(), "The abante footer logo isn't displayed");
+        //assert abante cart address is displayed
+        assertTrue(homePage.isAbanteCartAddressDisplayed(), "The abante cart address isn't displayed");
+        //assert abante cart phone number is displayed
+        assertTrue(homePage.isAbanteCartPhoneNumberDisplayed(), "The abante cart phone number isn't displayed");
+        //assert abante cart live chat button is displayed
+        assertTrue(homePage.isAbanteCartLiveChatButtonDisplayed(), "The abante cart live chat button isn't displayed");
+        //assert abante cart help desk button is displayed
+        assertTrue(homePage.isAbanteCartHelpDeskButtonDisplayed(), "The abante cart help desk button isn't displayed");
+        //assert footer link is displayed (list elements) //this assert works only on homepage for some reason despite having similar selectors -> StaleElementReferenceException
+        //assertTrue(homePage.isFooterLinkDisplayed(), "The footer link (list element) isn't displayed");
+        //assert footer copyright text is displayed
+        assertTrue(homePage.isCopyrightTextDisplayed(), "The copyright text isn't displayed");
+    }
+    //homepage web element assert methods
+    protected void isHomePageWebElementDisplayed(HomePage homePage){
         //slider section web elements
         //assert carousel previous button is displayed
         assertTrue(homePage.isCarouselPrevButtonDisplayed(), "The carousel previous button isn't displayed");
@@ -93,41 +142,6 @@ public class TestMethods extends BaseTest{
         assertTrue(homePage.isClientsFeedbackSectionTitleDisplayed(), "The clients feedback section title isn't displayed");
         //assert clients feedback drag comment carousel is displayed
         assertTrue(homePage.isClientsFeedbackSectionDragCommentCarouselDisplayed(), "The clients feedback drag comment carousel  isn't displayed");
-        //footer web elements
-        //assert newsletter signup title is displayed
-        assertTrue(homePage.isNewsletterSignupTitleDisplayed(), "The newsletter signup title isn't displayed");
-        //assert newsletter signup bar is displayed
-        assertTrue(homePage.isNewsletterSignupBarDisplayed(), "The newsletter signup bar isn't displayed");
-        //assert newsletter signup button is displayed
-        assertTrue(homePage.isNewsletterSignupButtonDisplayed(), "The newsletter signup button isn't displayed");
-        //assert 'art and fashion fuse' title is displayed
-        assertTrue(homePage.isArtAndFashionFuseTitleDisplayed(), "The 'art and fashion fuse' title isn't displayed");
-        //assert top brands link is displayed
-        assertTrue(homePage.isTopBrandsLinkDisplayed(), "The top brands link isn't displayed");
-        //assert discount link is displayed
-        assertTrue(homePage.isDiscountLinkDisplayed(), "The discount link isn't displayed");
-        //assert facebook icon link is displayed
-        assertTrue(homePage.isFacebookIconLinkDisplayed(), "The facebook icon link isn't displayed");
-        //assert twitter icon link is displayed
-        assertTrue(homePage.isTwitterIconLinkDisplayed(), "The twitter icon link isn't displayed");
-        //assert linked-in icon link is displayed
-        assertTrue(homePage.isLinkedInIconLinkDisplayed(), "The linkedin icon link isn't displayed");
-        //assert product column element is displayed
-        assertTrue(homePage.isProductColumnElementDisplayed(), "The product column element isn't displayed");
-        //assert abante footer logo is displayed
-        assertTrue(homePage.isAbanteFooterLogoDisplayed(), "The abante footer logo isn't displayed");
-        //assert abante cart address is displayed
-        assertTrue(homePage.isAbanteCartAddressDisplayed(), "The abante cart address isn't displayed");
-        //assert abante cart phone number is displayed
-        assertTrue(homePage.isAbanteCartPhoneNumberDisplayed(), "The abante cart phone number isn't displayed");
-        //assert abante cart live chat button is displayed
-        assertTrue(homePage.isAbanteCartLiveChatButtonDisplayed(), "The abante cart live chat button isn't displayed");
-        //assert abante cart help desk button is displayed
-        assertTrue(homePage.isAbanteCartHelpDeskButtonDisplayed(), "The abante cart help desk button isn't displayed");
-        //assert footer link is displayed (list elements
-        assertTrue(homePage.isFooterLinkDisplayed(), "The footer link (list element) isn't displayed");
-        //assert footer copyright text is displayed
-        assertTrue(homePage.isCopyrightTextDisplayed(), "The copyright text isn't displayed");
     }
     //homepage text element assert method
     protected void doesHomePageTextElementMatchExpectations(HomePage homePage){
@@ -158,6 +172,23 @@ public class TestMethods extends BaseTest{
                 "Arlington, TX 16819", homePage.getAbanteCartAddress(), "The abante cart address doesn't match expected result");
         //assert abante cart phone number matches expectations
         assertEquals("(444) 019 120 0401", homePage.getAbanteCartPhoneNumber(), "The abante cart phone number doesn't match expected result");
+    }
+
+    //register/login dashboard page web element assert
+    protected void isRegisterLoginDashboardPageWebElementDisplayed(RegisterLoginDashboardPage registerLoginDashboardPage){
+        //assert register/login dashboard page title is displayed
+        assertTrue(registerLoginDashboardPage.isRegisterLoginDashboardPageTitleDisplayed(), "The register/login dashboard page title isn't displayed");
+        //assert register card section title is displayed
+        assertTrue(registerLoginDashboardPage.isRegisterCardSectionTitleDisplayed(), "The register card section title isn't displayed");
+        //assert register card button (register) is displayed
+        assertTrue(registerLoginDashboardPage.isRegisterCardButtonDisplayed(), "The register card button (register) isn't displayed");
+    }
+    //register/login dashboard page text element assert
+    protected void doesRegisterLoginDashboardPageTextMatchExpectations(RegisterLoginDashboardPage registerLoginDashboardPage){
+        //assert register/login dashboard page title matches expectations
+        assertEquals("Account Login", registerLoginDashboardPage.getRegisterLoginDashboardPageTitle(), "The register login dashboard page title doesn't match expected result");
+        //assert register card section title matches expectations
+        assertEquals("I am a new customer.", registerLoginDashboardPage.getRegisterCardSectionTitle(), "The register card section title doesn't match expected result");
     }
 
 }
