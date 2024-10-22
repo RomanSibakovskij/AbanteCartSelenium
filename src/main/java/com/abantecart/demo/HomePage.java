@@ -44,7 +44,7 @@ public class HomePage extends BasePage{
     private WebElement carouselPrevButton;
     @FindBy(xpath = "//button[@data-bs-slide='next']")
     private WebElement carouselNextButton;
-    @FindBy(xpath = "(//div[@class='carousel-item active'])[1]")
+    @FindBy(xpath = "//div[@id='carouselExample']/div/div[1]/img[1]")
     private WebElement carouselActiveImage;
 
     //content main section title web element
@@ -144,6 +144,34 @@ public class HomePage extends BasePage{
     public HomePage(WebDriver driver) {
         super(driver);
     }
+
+    //abante cart title getter
+    public String getAbanteCartTitle(){return abanteCartTitle.getText();}
+    //latest products title getter
+    public String getLatestProductsTitle(){return latestProductsSectionTitle.getText();}
+    //latest products title getter
+    public String getFeaturedProductsTitle(){return featuredProductsSectionTitle.getText();}
+    //featured banner title getter
+    public String getFeaturedBannerTitle(){return featuredBannerSectionTitle.getText();}
+    //bestseller products title getter
+    public String getBestsellerProductsTitle(){return bestsellersSectionTitle.getText();}
+    //special products title getter
+    public String getSpecialProductsTitle(){return specialsSectionTitle.getText();}
+    //brands scrolling list title getter
+    public String getBrandsScrollingListTitle(){return brandsScrollingSectionTitle.getText();}
+    //most featured products title getter
+    public String getMostFeaturedProductsTitle(){return mostFeaturedProductTitle.getText();}
+    //clients feedback section title getter
+    public String getClientsFeedbackSectionTitle(){return clientsFeedbackSectionTitle.getText();}
+    //newsletter signup title getter
+    public String getNewsletterSignupTitle(){return newsLetterSignupTitle.getText();}
+    //'art and fashion fuse' title getter
+    public String getArtAndFashionFuseTitle(){return artAndFashionFuseTitle.getText();}
+    //abante cart address getter
+    public String getAbanteCartAddress(){return abanteCartAddress.getText();}
+    //abante cart phone number getter
+    public String getAbanteCartPhoneNumber(){return abanteCartPhoneNumber.getText();}
+
 
     //homepage web element assert methods
     public boolean isHomePageLogoLinkDisplayed(){return homePageLogoLink.isDisplayed();}

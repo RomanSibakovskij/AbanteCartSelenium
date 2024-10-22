@@ -9,7 +9,6 @@ import java.util.*;
 
 public class BaseTest {
     protected WebDriver driver;
-    protected HomePage homePage;
 
     @BeforeEach
     void setUp(){
