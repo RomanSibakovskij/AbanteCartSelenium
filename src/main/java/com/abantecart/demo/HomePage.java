@@ -110,7 +110,7 @@ public class HomePage extends BasePage{
     private WebElement artAndFashionFuseTitle;
     //links
     @FindBy(xpath = "//div[@class='footer-abtus text-center text-md-start']/ul/li[1]")
-    private WebElement topBrandLink;
+    private WebElement topBrandsLink;
     @FindBy(xpath = "//div[@class='footer-abtus text-center text-md-start']/ul/li[2]")
     private WebElement discountLink;
     //social links
@@ -210,7 +210,7 @@ public class HomePage extends BasePage{
         return true;
     }
     public boolean isSpecialProductsSectionTitleDisplayed(){return specialsSectionTitle.isDisplayed();}
-    public boolean isSpecialProductsProductDisplayed() {
+    public boolean isSpecialProductDisplayed() {
         for (WebElement element : specialsProductElements) {
             if (!element.isDisplayed()) {
                 return false;
@@ -229,7 +229,7 @@ public class HomePage extends BasePage{
     public boolean isNewsletterSignupBarDisplayed(){return  newsLetterSignupSubscriptionBar.isDisplayed();}
     public boolean isNewsletterSignupButtonDisplayed(){return  newsLetterSignupButton.isDisplayed();}
     public boolean isArtAndFashionFuseTitleDisplayed(){return artAndFashionFuseTitle.isDisplayed();}
-    public boolean isTopBrandLinkDisplayed(){return topBrandLink.isDisplayed();}
+    public boolean isTopBrandsLinkDisplayed(){return topBrandsLink.isDisplayed();}
     public boolean isDiscountLinkDisplayed(){return discountLink.isDisplayed();}
     public boolean isFacebookIconLinkDisplayed(){return faceBookLink.isDisplayed();}
     public boolean isTwitterIconLinkDisplayed(){return twitterLink.isDisplayed();}
@@ -255,6 +255,6 @@ public class HomePage extends BasePage{
         }
         return true;
     }
-    public boolean idCopyrightTextDisplayed(){return copyrightTextElement.isDisplayed();}
+    public boolean isCopyrightTextDisplayed(){return copyrightTextElement.isDisplayed();}
 
 }
