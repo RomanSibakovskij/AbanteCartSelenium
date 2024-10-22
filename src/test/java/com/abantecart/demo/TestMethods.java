@@ -9,34 +9,10 @@ public class TestMethods extends BaseTest{
     protected void navigateToUserSignupPageTest(HomePage homePage){
         //homepage web element assert
         isHomePageWebElementDisplayed(homePage);
-        //assert abante cart title matches expectations
-        assertEquals("Welcome to AbanteCart demo web store!", homePage.getAbanteCartTitle(), "The abante cart title doesn't match expected result");
-        //assert latest products section title matches expectations
-        assertEquals("Latest Products", homePage.getLatestProductsTitle(), "The latest products section title doesn't match expected result");
-        //assert featured products section title matches expectations
-        assertEquals("Featured", homePage.getFeaturedProductsTitle(), "The featured products section title doesn't match expected result");
-        //assert featured banner section title matches expectations
-        assertEquals("Featured Banner", homePage.getFeaturedBannerTitle(), "The featured banner title doesn't match expected result");
-        //assert bestseller products section title matches expectations
-        assertEquals("Bestsellers", homePage.getBestsellerProductsTitle(), "The bestseller products section title doesn't match expected result");
-        //assert special products section title matches expectations
-        assertEquals("Specials", homePage.getSpecialProductsTitle(), "The special products section title doesn't match expected result");
-        //assert most featured products section title matches expectations
-        assertEquals("See Our Most Featured Product", homePage.getMostFeaturedProductsTitle(), "The most featured products section title doesn't match expected result");
-        //assert brands scrolling section title matches expectations
-        assertEquals("Brands Scrolling List", homePage.getBrandsScrollingListTitle(), "The brands scrolling section title doesn't match expected result");
-        //assert client feedback section title matches expectations
-        assertEquals("What Our Clients Say About Us", homePage.getClientsFeedbackSectionTitle(), "The client feedback section title doesn't match expected result");
-        //assert newsletter signup section title matches expectations
-        assertEquals("Newsletter Signup", homePage.getNewsletterSignupTitle(), "The newsletter signup section title doesn't match expected result");
-        //assert 'art and fashion fuse' section title matches expectations
-        assertEquals("Where art and fashion fuse. Elevate your style with Balenciaga.", homePage.getArtAndFashionFuseTitle(), "The 'art and fashion fuse' section title doesn't match expected result");
-        //assert abante cart address matches expectations
-        assertEquals("1487 Rocky Horse Carrefour\n" +
-                "Arlington, TX 16819", homePage.getAbanteCartAddress(), "The abante cart address doesn't match expected result");
-        //assert abante cart phone number matches expectations
-        assertEquals("(444) 019 120 0401", homePage.getAbanteCartPhoneNumber(), "The abante cart phone number doesn't match expected result");
-
+        //homepage text element assert method
+        doesHomePageTextElementMatchExpectations(homePage);
+        //click on register/login page icon button
+        homePage.clickRegisterLoginPageIconButton();
     }
 
     //homepage web element assert methods (Header and footer elements share similarities in other pages so those will be reused)
@@ -152,6 +128,36 @@ public class TestMethods extends BaseTest{
         assertTrue(homePage.isFooterLinkDisplayed(), "The footer link (list element) isn't displayed");
         //assert footer copyright text is displayed
         assertTrue(homePage.isCopyrightTextDisplayed(), "The copyright text isn't displayed");
+    }
+    //homepage text element assert method
+    protected void doesHomePageTextElementMatchExpectations(HomePage homePage){
+        //assert abante cart title matches expectations
+        assertEquals("Welcome to AbanteCart demo web store!", homePage.getAbanteCartTitle(), "The abante cart title doesn't match expected result");
+        //assert latest products section title matches expectations
+        assertEquals("Latest Products", homePage.getLatestProductsTitle(), "The latest products section title doesn't match expected result");
+        //assert featured products section title matches expectations
+        assertEquals("Featured", homePage.getFeaturedProductsTitle(), "The featured products section title doesn't match expected result");
+        //assert featured banner section title matches expectations
+        assertEquals("Featured Banner", homePage.getFeaturedBannerTitle(), "The featured banner title doesn't match expected result");
+        //assert bestseller products section title matches expectations
+        assertEquals("Bestsellers", homePage.getBestsellerProductsTitle(), "The bestseller products section title doesn't match expected result");
+        //assert special products section title matches expectations
+        assertEquals("Specials", homePage.getSpecialProductsTitle(), "The special products section title doesn't match expected result");
+        //assert most featured products section title matches expectations
+        assertEquals("See Our Most Featured Product", homePage.getMostFeaturedProductsTitle(), "The most featured products section title doesn't match expected result");
+        //assert brands scrolling section title matches expectations
+        assertEquals("Brands Scrolling List", homePage.getBrandsScrollingListTitle(), "The brands scrolling section title doesn't match expected result");
+        //assert client feedback section title matches expectations
+        assertEquals("What Our Clients Say About Us", homePage.getClientsFeedbackSectionTitle(), "The client feedback section title doesn't match expected result");
+        //assert newsletter signup section title matches expectations
+        assertEquals("Newsletter Signup", homePage.getNewsletterSignupTitle(), "The newsletter signup section title doesn't match expected result");
+        //assert 'art and fashion fuse' section title matches expectations
+        assertEquals("Where art and fashion fuse. Elevate your style with Balenciaga.", homePage.getArtAndFashionFuseTitle(), "The 'art and fashion fuse' section title doesn't match expected result");
+        //assert abante cart address matches expectations
+        assertEquals("1487 Rocky Horse Carrefour\n" +
+                "Arlington, TX 16819", homePage.getAbanteCartAddress(), "The abante cart address doesn't match expected result");
+        //assert abante cart phone number matches expectations
+        assertEquals("(444) 019 120 0401", homePage.getAbanteCartPhoneNumber(), "The abante cart phone number doesn't match expected result");
     }
 
 }

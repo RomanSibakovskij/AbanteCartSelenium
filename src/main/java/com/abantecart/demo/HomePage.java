@@ -2,7 +2,9 @@ package com.abantecart.demo;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.*;
 
+import java.time.Duration;
 import java.util.*;
 
 public class HomePage extends BasePage{
@@ -143,6 +145,13 @@ public class HomePage extends BasePage{
 
     public HomePage(WebDriver driver) {
         super(driver);
+    }
+
+    //register/login icon button click method
+    public void clickRegisterLoginPageIconButton(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(445));
+        wait.until(ExpectedConditions.elementToBeClickable(userAccountIconButton));
+        userAccountIconButton.click();
     }
 
     //abante cart title getter
