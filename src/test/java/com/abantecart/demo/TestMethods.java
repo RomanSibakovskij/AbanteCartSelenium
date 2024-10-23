@@ -29,6 +29,17 @@ public class TestMethods extends BaseTest{
         assertEquals("Create Account", registerPage.getCreateAccountTitle(), "The register page title doesn't match expectations / the user is on the wrong page");
     }
 
+    //valid user account registration method
+    protected void validUserAccountCreationTest(RegisterPage registerPage){
+        //assert the register page title matches expectations
+        assertEquals("Create Account", registerPage.getCreateAccountTitle(), "The register page title doesn't match expectations");
+        //register page web element assert
+        isRegisterPageWebElementDisplayed(registerPage);
+        HomePage homePage = new HomePage(driver);
+        //general web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+    }
+
     //general page web element asserts (header and footer elements)
     protected void isGeneralPageWebElementDisplayed(HomePage homePage){
         //header web elements
@@ -44,8 +55,6 @@ public class TestMethods extends BaseTest{
         assertTrue(homePage.isCurrencyConversionDropdownMenuDisplayed(), "The currency conversion dropdown menu isn't displayed");
         //assert shopping cart icon button is displayed
         assertTrue(homePage.isShoppingCartIconButtonDisplayed(), "The shopping cart icon button isn't displayed");
-        //assert user account icon button is displayed
-        assertTrue(homePage.isUserAccountIconButtonDisplayed(), "The user account icon button isn't displayed");
         //header bottom(navbar) web elements
         //assert all categories hover dropdown menu is displayed
         assertTrue(homePage.isAllCategoriesHoverDropdownMenuDisplayed(), "The all categories hover dropdown menu isn't displayed");
@@ -99,6 +108,8 @@ public class TestMethods extends BaseTest{
     }
     //homepage web element assert methods
     protected void isHomePageWebElementDisplayed(HomePage homePage){
+        //assert user account icon button is displayed
+        assertTrue(homePage.isUserAccountIconButtonDisplayed(), "The user account icon button isn't displayed");
         //slider section web elements
         //assert carousel previous button is displayed
         assertTrue(homePage.isCarouselPrevButtonDisplayed(), "The carousel previous button isn't displayed");
@@ -194,6 +205,42 @@ public class TestMethods extends BaseTest{
         assertEquals("I am a new customer.", registerLoginDashboardPage.getRegisterCardSectionTitle(), "The register card section title doesn't match expected result");
     }
 
-    
+    //register page web element assert
+    protected void isRegisterPageWebElementDisplayed(RegisterPage registerPage){
+        //assert first name input field is displayed
+        assertTrue(registerPage.isFirstNameInputFieldDisplayed(), "The first name input field isn't displayed");
+        //assert last name input field is displayed
+        assertTrue(registerPage.isLastNameInputFieldDisplayed(), "The last name input field isn't displayed");
+        //assert email address input field is displayed
+        assertTrue(registerPage.isEmailAddressInputFieldDisplayed(), "The email address input field isn't displayed");
+        //assert telephone number input field is displayed
+        assertTrue(registerPage.isPhoneInputFieldDisplayed(), "The telephone number input field isn't displayed");
+        //assert company input field is displayed
+        assertTrue(registerPage.isCompanyInputFieldDisplayed(), "The company input field isn't displayed");
+        //assert address 1 (required) input field is displayed
+        assertTrue(registerPage.isAddress1InputFieldDisplayed(), "The address 1 input field isn't displayed");
+        //assert address 2 input field is displayed
+        assertTrue(registerPage.isAddress2InputFieldDisplayed(), "The address 2 input field isn't displayed");
+        //assert city input field is displayed
+        assertTrue(registerPage.isCityInputFieldDisplayed(), "The city input field isn't displayed");
+        //assert region dropdown menu is displayed
+        assertTrue(registerPage.isRegionDropdownMenuDisplayed(), "The region dropdown menu isn't displayed");
+        //assert ZIP code input field is displayed
+        assertTrue(registerPage.isZipCodeInputFieldDisplayed(), "The ZIP code input field isn't displayed");
+        //assert country dropdown menu is displayed
+        assertTrue(registerPage.isCountryDropdownMenuDisplayed(), "The country dropdown menu isn't displayed");
+        //assert login name input field is displayed
+        assertTrue(registerPage.isLoginNameInputFieldDisplayed(), "The login name input field isn't displayed");
+        //assert password input field is displayed
+        assertTrue(registerPage.isPasswordInputFieldDisplayed(), "The password input field isn't displayed");
+        //assert confirm password input field is displayed
+        assertTrue(registerPage.isConfirmPasswordInputFieldDisplayed(), "The confirm password input field isn't displayed");
+        //assert 'subscribe to newsletter' checkbox is displayed
+        assertTrue(registerPage.isSubscribeToNewsletterCheckboxDisplayed(), "The 'subscribe to newsletter' checkbox isn't displayed");
+        //assert 'do not subscribe to newsletter' checkbox is displayed
+        assertTrue(registerPage.isDoNotSubscribeToNewsletterCheckboxDisplayed(), "The 'do not subscribe to newsletter' checkbox isn't displayed");
+        //assert 'privacy policy' checkbox is displayed
+        assertTrue(registerPage.isPrivacyPolicyCheckboxDisplayed(), "The 'privacy policy' checkbox isn't displayed");
+    }
 
 }

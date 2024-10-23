@@ -59,9 +59,29 @@ public class RegisterPage extends BasePage{
     @FindBy(xpath = "//div[@class='ps-4 p-3 col-12 d-flex flex-wrap']//button[@type='submit']")
     private WebElement continueButton;
 
+    //valid input data (required input)
+    private String firstName;
+    private String lastName;
+    private String emailAddress;
+    private String address1;
+    private String city;
+    private String zipCode;
+    private String loginName;
+    private String password;
 
     public RegisterPage(WebDriver driver) {
         super(driver);
+    }
+
+
+
+
+
+    //click 'Continue' button method
+    public void clickContinueButton(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(445));
+        wait.until(ExpectedConditions.elementToBeClickable(continueButton));
+        continueButton.click();
     }
 
 
@@ -86,6 +106,5 @@ public class RegisterPage extends BasePage{
     public boolean isSubscribeToNewsletterCheckboxDisplayed(){return subscribeToNewsletterCheckbox.isDisplayed();}
     public boolean isDoNotSubscribeToNewsletterCheckboxDisplayed(){return doNotSubscribeToNewsletterCheckbox.isDisplayed();}
     public boolean isPrivacyPolicyCheckboxDisplayed(){return privacyPolicyCheckbox.isDisplayed();}
-    public boolean isContinueButtonDisplayed(){return continueButton.isDisplayed();}
 
 }
