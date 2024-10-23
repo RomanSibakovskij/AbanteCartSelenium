@@ -24,6 +24,9 @@ public class TestMethods extends BaseTest{
         isGeneralPageWebElementDisplayed(homePage);
         //click 'register' button
         registerLoginDashboardPage.clickRegisterCardButton();
+        RegisterPage registerPage = new RegisterPage(driver);
+        //assert the user got onto register page
+        assertEquals("Create Account", registerPage.getCreateAccountTitle(), "The register page title doesn't match expectations / the user is on the wrong page");
     }
 
     //general page web element asserts (header and footer elements)
@@ -190,5 +193,7 @@ public class TestMethods extends BaseTest{
         //assert register card section title matches expectations
         assertEquals("I am a new customer.", registerLoginDashboardPage.getRegisterCardSectionTitle(), "The register card section title doesn't match expected result");
     }
+
+    
 
 }
