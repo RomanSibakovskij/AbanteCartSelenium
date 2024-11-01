@@ -38,6 +38,39 @@ public class TestMethods extends BaseTest{
         HomePage homePage = new HomePage(driver);
         //general web element assert
         isGeneralPageWebElementDisplayed(homePage);
+        //register page web element assert
+        isRegisterPageWebElementDisplayed(registerPage);
+        //valid user input data getter
+        registerPage.validUserInputDataGetter();
+        //input valid first name
+        registerPage.inputValidFirstNameIntoInputField();
+        //input valid last name
+        registerPage.inputValidLastNameIntoInputField();
+        //input valid email address
+        registerPage.inputValidEmailIntoInputField();
+        //input valid user address (address 1 - required)
+        registerPage.inputValidAddressIntoInputField();
+        //input valid user city
+        registerPage.inputValidCityIntoInputField();
+        //click region dropdown menu
+        registerPage.clickRegionDropdownMenu();
+        //select 'Illinois' state
+        registerPage.selectIllinoisOption();
+        //input valid zip code
+        registerPage.inputValidZipCodeIntoInputField();
+        //input valid login name
+        registerPage.inputValidLoginNameIntoInputField();
+        //input valid password
+        registerPage.inputValidPasswordIntoInputField();
+        //input valid confirmation password
+        registerPage.inputValidConfirmPasswordIntoInputField();
+        //click privacy policy checkbox (required)
+        registerPage.clickPrivacyPolicyCheckbox();
+        //click 'Continue' button (it appears after clicking privacy policy checkbox)
+        registerPage.clickContinueButton();
+        //assert the account has been created
+        assertEquals("Your Account Has Been Created!", registerPage.getAccountCreationMessage(), "The confirmation message doesn't match expectations or user account hasn't been created.");
+
     }
 
     //general page web element asserts (header and footer elements)
