@@ -30,6 +30,8 @@ public class RegisterPage extends BasePage{
     private WebElement regionInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='Zip/postal code must be between 3 and 10 characters!']")
     private WebElement zipCodeInputErrorMessage;
+    @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='Please select a country!']")
+    private WebElement countryInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='email']")
@@ -67,6 +69,9 @@ public class RegisterPage extends BasePage{
     //US country option dropdown menu
     @FindBy(xpath = "//div[@class='card-body']//select[@id='AccountFrm_country_id']/option[@value='223']")
     private WebElement usCountryOption;
+    //'Please Select' country option web element
+    @FindBy(xpath = "//div[@class='card-body']//select[@id='AccountFrm_country_id']/option[1]")
+    private WebElement pleaseSelectCountryRegionOption;
 
     //checkbox web elements
     @FindBy(xpath = "//div[@class='card-body']//input[@id='AccountFrm_newsletter1']")
@@ -336,6 +341,8 @@ public class RegisterPage extends BasePage{
     }
     //select 'United States' option
     public void selectUsOption(){usCountryOption.click();}
+    //select 'Please Select' option - for no country input test
+    public void selectPleaseSelectCountryOption(){pleaseSelectCountryRegionOption.click();}
 
     //no singular data input methods
     //invalid user data input method (no first name)
@@ -404,6 +411,7 @@ public class RegisterPage extends BasePage{
     public String getInvalidCityInputErrorMessage(){return  cityInputErrorMessage.getText();}
     public String getInvalidRegionInputErrorMessage(){return  regionInputErrorMessage.getText();}
     public String getInvalidZipCodeInputErrorMessage(){return  zipCodeInputErrorMessage.getText();}
+    public String getInvalidCountryInputErrorMessage(){return  countryInputErrorMessage.getText();}
 
     //login name / password getters
     public String getLoginName() {return loginName;}
