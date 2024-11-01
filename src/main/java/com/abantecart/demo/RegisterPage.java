@@ -80,6 +80,10 @@ public class RegisterPage extends BasePage{
     private String password;
     private String confirmPassword;
 
+    //no singular data input
+    private String noFirstName;
+
+
     public RegisterPage(WebDriver driver) {
         super(driver);
     }
@@ -106,6 +110,30 @@ public class RegisterPage extends BasePage{
         logger.info("Login name: " + loginName);
         logger.info("Password: " + password);
         logger.info("Confirm password: " + confirmPassword);
+    }
+    //no singular data input
+    //invalid user creation input data getter
+    public void invalidUserInputDataNoFirstNameGetter(){
+        noFirstName = "";
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with no first name): " + "\n");
+        logger.info("No first name (for user creation with no first name): " + noFirstName);
+        logger.info("Last name (for user creation with no first name): " + lastName);
+        logger.info("Email address (for user creation with no first name): " + emailAddress);
+        logger.info("Address1 (for user creation with no first name): " + address1);
+        logger.info("City (for user creation with no first name): " + city);
+        logger.info("Zip code (for user creation with no first name): " + zipCode);
+        logger.info("Login name (for user creation with no first name): " + loginName);
+        logger.info("Password (for user creation with no first name): " + password);
+        logger.info("Confirm password (for user creation with no first name): " + confirmPassword);
     }
 
     //valid user data input methods
@@ -173,6 +201,14 @@ public class RegisterPage extends BasePage{
     //select 'United States' option
     public void selectUsOption(){usCountryOption.click();}
 
+    //invalid user data input methods (no first name)
+    public void inputNoFirstNameIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
+        firstNameInputField.sendKeys(noFirstName);
+    }
+
+    //click 'Privacy policy' checkbox method
     public void clickPrivacyPolicyCheckbox(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(445));
         wait.until(ExpectedConditions.elementToBeClickable(privacyPolicyCheckbox));
@@ -192,6 +228,9 @@ public class RegisterPage extends BasePage{
 
     //account confirmation message getter
     public String getAccountCreationMessage(){return accountConfirmationMessage.getText();}
+
+    //input length error message getter
+    public String getInvalidInputErrorMessage(){return inputErrorMessage.getText();}
 
     //login name / password getters
     public String getLoginName() {return loginName;}
