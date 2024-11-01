@@ -28,6 +28,8 @@ public class RegisterPage extends BasePage{
     private WebElement cityInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='Please select a region / state!']")
     private WebElement regionInputErrorMessage;
+    @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='Zip/postal code must be between 3 and 10 characters!']")
+    private WebElement zipCodeInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='email']")
@@ -99,6 +101,7 @@ public class RegisterPage extends BasePage{
     private String noEmailAddress;
     private String noAddress1;
     private String noCity;
+    private String noZipCode;
 
 
     public RegisterPage(WebDriver driver) {super(driver);}
@@ -243,6 +246,29 @@ public class RegisterPage extends BasePage{
         logger.info("Password (for user creation with no user city): " + password);
         logger.info("Confirm password (for user creation with no user city): " + confirmPassword);
     }
+    //invalid user creation input data getter (no user zip code)
+    public void invalidUserInputDataNoUserZipCodeGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        noZipCode = "";
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with no user zip code): " + "\n");
+        logger.info("First name (for user creation with no user zip code): " + firstName);
+        logger.info("Last name (for user creation with no user zip code): " + lastName);
+        logger.info("Email address (for user creation with no user zip code): " + emailAddress);
+        logger.info("Address1 (for user creation with no user zip code): " + address1);
+        logger.info("User city (for user creation with no user zip code): " + city);
+        logger.info("No zip code (for user creation with no user zip code): " + noZipCode);
+        logger.info("Login name (for user creation with no user zip code): " + loginName);
+        logger.info("Password (for user creation with no user zip code): " + password);
+        logger.info("Confirm password (for user creation with no user zip codey): " + confirmPassword);
+    }
 
     //valid user data input methods
     public void inputValidFirstNameIntoInputField(){
@@ -336,11 +362,17 @@ public class RegisterPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(address1InputField));
         address1InputField.sendKeys(noAddress1);
     }
-    //invalid user data input method (no user city))
+    //invalid user data input method (no user city)
     public void inputNoUserCityIntoInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(cityInputField));
         cityInputField.sendKeys(noCity);
+    }
+    //invalid user data input method (no user zip code)
+    public void inputNoZipCodeIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(zipCodeInputField));
+        zipCodeInputField.sendKeys(noZipCode);
     }
 
     //click 'Privacy policy' checkbox method
@@ -371,6 +403,7 @@ public class RegisterPage extends BasePage{
     public String getInvalidAddress1InputErrorMessage(){return  address1InputErrorMessage.getText();}
     public String getInvalidCityInputErrorMessage(){return  cityInputErrorMessage.getText();}
     public String getInvalidRegionInputErrorMessage(){return  regionInputErrorMessage.getText();}
+    public String getInvalidZipCodeInputErrorMessage(){return  zipCodeInputErrorMessage.getText();}
 
     //login name / password getters
     public String getLoginName() {return loginName;}
