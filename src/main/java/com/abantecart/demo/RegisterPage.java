@@ -20,6 +20,8 @@ public class RegisterPage extends BasePage{
     private WebElement firstNameInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='Last Name must be between 1 and 32 characters!']")
     private WebElement lastNameInputErrorMessage;
+    @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='Email Address does not appear to be valid!']")
+    private WebElement emailInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='email']")
@@ -85,11 +87,10 @@ public class RegisterPage extends BasePage{
     //no singular data input
     private String noFirstName;
     private String noLastName;
+    private String noEmailAddress;
 
 
-    public RegisterPage(WebDriver driver) {
-        super(driver);
-    }
+    public RegisterPage(WebDriver driver) {super(driver);}
 
     //valid user creation input data getter
     public void validUserInputDataGetter(){
@@ -114,6 +115,7 @@ public class RegisterPage extends BasePage{
         logger.info("Password: " + password);
         logger.info("Confirm password: " + confirmPassword);
     }
+
     //no singular data input
     //invalid user creation input data getter (no first name)
     public void invalidUserInputDataNoFirstNameGetter(){
@@ -160,6 +162,29 @@ public class RegisterPage extends BasePage{
         logger.info("Login name (for user creation with no last name): " + loginName);
         logger.info("Password (for user creation with no last name): " + password);
         logger.info("Confirm password (for user creation with no last name): " + confirmPassword);
+    }
+    //invalid user creation input data getter (no email)
+    public void invalidUserInputDataNoEmailGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        noEmailAddress = "";
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with no email address): " + "\n");
+        logger.info("First name (for user creation with no email address): " + firstName);
+        logger.info("Last name (for user creation with no email address): " + lastName);
+        logger.info("No email address (for user creation with no email address): " + noEmailAddress);
+        logger.info("Address1 (for user creation with no email address): " + address1);
+        logger.info("City (for user creation with no email address): " + city);
+        logger.info("Zip code (for user creation with no email address): " + zipCode);
+        logger.info("Login name (for user creation with no email address): " + loginName);
+        logger.info("Password (for user creation with no email address): " + password);
+        logger.info("Confirm password (for user creation with no email address): " + confirmPassword);
     }
 
     //valid user data input methods
@@ -228,17 +253,23 @@ public class RegisterPage extends BasePage{
     public void selectUsOption(){usCountryOption.click();}
 
     //no singular data input methods
-    //invalid user data input methods (no first name)
+    //invalid user data input method (no first name)
     public void inputNoFirstNameIntoInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
         firstNameInputField.sendKeys(noFirstName);
     }
-    //invalid user data input methods (no last name)
+    //invalid user data input method (no last name)
     public void inputNoLastNameIntoInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
         lastNameInputField.sendKeys(noLastName);
+    }
+    //invalid user data input method (no email address)
+    public void inputNoEmailAddressIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(emailAddressInputField));
+        emailAddressInputField.sendKeys(noEmailAddress);
     }
 
     //click 'Privacy policy' checkbox method
@@ -265,6 +296,7 @@ public class RegisterPage extends BasePage{
     //input length error message getters
     public String getInvalidFirstNameInputErrorMessage(){return firstNameInputErrorMessage.getText();}
     public String getInvalidLastNameInputErrorMessage(){return  lastNameInputErrorMessage.getText();}
+    public String getInvalidEmailInputErrorMessage(){return  emailInputErrorMessage.getText();}
 
     //login name / password getters
     public String getLoginName() {return loginName;}
