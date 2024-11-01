@@ -26,6 +26,8 @@ public class RegisterPage extends BasePage{
     private WebElement address1InputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='City must be between 3 and 128 characters!']")
     private WebElement cityInputErrorMessage;
+    @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='Please select a region / state!']")
+    private WebElement regionInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='email']")
@@ -55,6 +57,9 @@ public class RegisterPage extends BasePage{
     //Illinois state option web element
     @FindBy(xpath = "//div[@class='card-body']//select[@id='AccountFrm_zone_id']/option[@value='3635']")
     private WebElement illinoisOption;
+    //'Please Select' region option web element
+    @FindBy(xpath = "//div[@class='card-body']//select[@id='AccountFrm_zone_id']/option[1]")
+    private WebElement pleaseSelectRegionOption;
     @FindBy(xpath = "//div[@class='card-body']//select[@id='AccountFrm_country_id']")
     private WebElement countryDropdownMenu;
     //US country option dropdown menu
@@ -294,6 +299,8 @@ public class RegisterPage extends BasePage{
     }
     //select 'Illinois' option
     public void selectIllinoisOption(){illinoisOption.click();}
+    //select 'Please Select' option - for no region input test
+    public void selectPleaseSelectRegionOption(){pleaseSelectRegionOption.click();}
 
     //click country dropdown menu
     public void clickCountryDropdownMenu(){
@@ -363,6 +370,7 @@ public class RegisterPage extends BasePage{
     public String getInvalidEmailInputErrorMessage(){return  emailInputErrorMessage.getText();}
     public String getInvalidAddress1InputErrorMessage(){return  address1InputErrorMessage.getText();}
     public String getInvalidCityInputErrorMessage(){return  cityInputErrorMessage.getText();}
+    public String getInvalidRegionInputErrorMessage(){return  regionInputErrorMessage.getText();}
 
     //login name / password getters
     public String getLoginName() {return loginName;}

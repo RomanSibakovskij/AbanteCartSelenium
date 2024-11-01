@@ -82,4 +82,17 @@ public class RegisterPageTest extends TestMethods{
         //invalid user account creation test (no user city)
         invalidUserAccountCreationNoCityTest(registerPage);
     }
+
+    //Test 002f -> invalid user account creation test (no user region)
+    @Test
+    @DisplayName("Invalid User Account Creation - No User Region")
+    @Tag("Invalid_User_Account_Create")
+    @Tag("No_Singular_Input")
+    void invalidAccountRegisterNoRegionTest(){
+        HomePage homePage = new HomePage(driver);
+        navigateToUserSignupPageTest(homePage);
+        RegisterPage registerPage = new RegisterPage(driver);
+        //invalid user account creation test (no user region)
+        invalidUserAccountCreationNoRegionTest(registerPage);
+    }
 }

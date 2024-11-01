@@ -280,6 +280,48 @@ public class TestMethods extends BaseTest{
         //assert the valid error message appears
         assertEquals("City must be between 3 and 128 characters!", registerPage.getInvalidCityInputErrorMessage(), "The valid input length error message isn't displayed.");
     }
+    //invalid user account registration method - (no user region)
+    protected void invalidUserAccountCreationNoRegionTest(RegisterPage registerPage){
+        //assert the register page title matches expectations
+        assertEquals("Create Account", registerPage.getCreateAccountTitle(), "The register page title doesn't match expectations");
+        //register page web element assert
+        isRegisterPageWebElementDisplayed(registerPage);
+        HomePage homePage = new HomePage(driver);
+        //general web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //register page web element assert
+        isRegisterPageWebElementDisplayed(registerPage);
+        //valid user input data getter
+        registerPage.validUserInputDataGetter();
+        //input valid first name
+        registerPage.inputValidFirstNameIntoInputField();
+        //input valid last name
+        registerPage.inputValidLastNameIntoInputField();
+        //input valid email address
+        registerPage.inputValidEmailIntoInputField();
+        //input valid user address (address 1 - required)
+        registerPage.inputValidAddressIntoInputField();
+        //input valid user city
+        registerPage.inputValidCityIntoInputField();
+        //click region dropdown menu
+        registerPage.clickRegionDropdownMenu();
+        //select 'Please Select' state - blank option
+        registerPage.selectPleaseSelectRegionOption();
+        //input valid zip code
+        registerPage.inputValidZipCodeIntoInputField();
+        //input valid login name
+        registerPage.inputValidLoginNameIntoInputField();
+        //input valid password
+        registerPage.inputValidPasswordIntoInputField();
+        //input valid confirmation password
+        registerPage.inputValidConfirmPasswordIntoInputField();
+        //click privacy policy checkbox (required)
+        registerPage.clickPrivacyPolicyCheckbox();
+        //click 'Continue' button (it appears after clicking privacy policy checkbox)
+        registerPage.clickContinueButton();
+        //assert the valid error message appears
+        assertEquals("Please select a region / state!", registerPage.getInvalidRegionInputErrorMessage(), "The valid input length error message isn't displayed.");
+    }
 
     //general page web element asserts (header and footer elements)
     protected void isGeneralPageWebElementDisplayed(HomePage homePage){
