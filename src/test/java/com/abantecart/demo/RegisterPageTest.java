@@ -134,4 +134,17 @@ public class RegisterPageTest extends TestMethods{
         //invalid user account creation test (no user login name)
         invalidUserAccountCreationNoLoginNameTest(registerPage);
     }
+
+    //Test 002j -> invalid user account creation test (no user password)
+    @Test
+    @DisplayName("Invalid User Account Creation - No User Password")
+    @Tag("Invalid_User_Account_Create")
+    @Tag("No_Singular_Input")
+    void invalidAccountRegisterNoPasswordTest(){
+        HomePage homePage = new HomePage(driver);
+        navigateToUserSignupPageTest(homePage);
+        RegisterPage registerPage = new RegisterPage(driver);
+        //invalid user account creation test (no user password)
+        invalidUserAccountCreationNoPasswordTest(registerPage);
+    }
 }

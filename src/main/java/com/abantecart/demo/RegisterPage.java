@@ -34,6 +34,8 @@ public class RegisterPage extends BasePage{
     private WebElement countryInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='Login name must be alphanumeric only and between 5 and 64 characters!']")
     private WebElement loginNameInputErrorMessage;
+    @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='Password must be between 4 and 20 characters!']")
+    private WebElement passwordInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='email']")
@@ -110,6 +112,7 @@ public class RegisterPage extends BasePage{
     private String noCity;
     private String noZipCode;
     private String noLoginName;
+    private String noPassword;
 
 
     public RegisterPage(WebDriver driver) {super(driver);}
@@ -296,9 +299,32 @@ public class RegisterPage extends BasePage{
         logger.info("Address1 (for user creation with no login name): " + address1);
         logger.info("User city (for user creation with no login name): " + city);
         logger.info("Zip code (for user creation with no login name): " + zipCode);
-        logger.info("No login name (for user creation with no login name): " + loginName);
+        logger.info("No login name (for user creation with no login name): " + noLoginName);
         logger.info("Password (for user creation with no login name): " + password);
         logger.info("Confirm password (for user creation with no login name): " + confirmPassword);
+    }
+    //invalid user creation input data getter (no password input)
+    public void invalidUserInputDataNoPasswordGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        noPassword = "";
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with no password): " + "\n");
+        logger.info("First name (for user creation with no password): " + firstName);
+        logger.info("Last name (for user creation with no password): " + lastName);
+        logger.info("Email address (for user creation with no password): " + emailAddress);
+        logger.info("Address1 (for user creation with no password): " + address1);
+        logger.info("User city (for user creation with no password): " + city);
+        logger.info("Zip code (for user creation with no password): " + zipCode);
+        logger.info("Login name (for user creation with no password): " + loginName);
+        logger.info("Password (for user creation with no password): " + noPassword);
+        logger.info("Confirm password (for user creation with no password): " + confirmPassword);
     }
 
     //valid user data input methods
@@ -413,6 +439,12 @@ public class RegisterPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(loginNameInputField));
         loginNameInputField.sendKeys(noLoginName);
     }
+    //invalid user data input method (no user password)
+    public void inputNoPasswordIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(passwordInputField));
+        passwordInputField.sendKeys(noPassword);
+    }
 
     //click 'Privacy policy' checkbox method
     public void clickPrivacyPolicyCheckbox(){
@@ -445,6 +477,7 @@ public class RegisterPage extends BasePage{
     public String getInvalidZipCodeInputErrorMessage(){return  zipCodeInputErrorMessage.getText();}
     public String getInvalidCountryInputErrorMessage(){return  countryInputErrorMessage.getText();}
     public String getInvalidLoginNameInputErrorMessage(){return  loginNameInputErrorMessage.getText();}
+    public String getInvalidPasswordInputErrorMessage(){return  passwordInputErrorMessage.getText();}
 
     //login name / password getters
     public String getLoginName() {return loginName;}
