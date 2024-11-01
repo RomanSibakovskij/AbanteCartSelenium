@@ -5,7 +5,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
-import java.util.*;
 
 public class RegisterPage extends BasePage{
 
@@ -16,8 +15,11 @@ public class RegisterPage extends BasePage{
     //input fields web elements
     @FindBy(xpath = "//div[@class='card-body']//input[@name='firstname']")
     private WebElement firstNameInputField;
+    //invalid input error message web elements
     @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span")
-    private WebElement inputErrorMessage;
+    private WebElement firstNameInputErrorMessage;
+    @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='Last Name must be between 1 and 32 characters!']")
+    private WebElement lastNameInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='email']")
@@ -82,6 +84,7 @@ public class RegisterPage extends BasePage{
 
     //no singular data input
     private String noFirstName;
+    private String noLastName;
 
 
     public RegisterPage(WebDriver driver) {
@@ -112,7 +115,7 @@ public class RegisterPage extends BasePage{
         logger.info("Confirm password: " + confirmPassword);
     }
     //no singular data input
-    //invalid user creation input data getter
+    //invalid user creation input data getter (no first name)
     public void invalidUserInputDataNoFirstNameGetter(){
         noFirstName = "";
         lastName = TestDataGenerator.getRandomLastName();
@@ -125,7 +128,7 @@ public class RegisterPage extends BasePage{
         confirmPassword = password;
 
         System.out.println("Data generated for invalid user account creation  (for user creation with no first name): " + "\n");
-        logger.info("No first name (for user creation with no first name): " + noFirstName);
+        logger.info("No first name (for user creation with no first name): " + firstName);
         logger.info("Last name (for user creation with no first name): " + lastName);
         logger.info("Email address (for user creation with no first name): " + emailAddress);
         logger.info("Address1 (for user creation with no first name): " + address1);
@@ -134,6 +137,29 @@ public class RegisterPage extends BasePage{
         logger.info("Login name (for user creation with no first name): " + loginName);
         logger.info("Password (for user creation with no first name): " + password);
         logger.info("Confirm password (for user creation with no first name): " + confirmPassword);
+    }
+    //invalid user creation input data getter (no last name)
+    public void invalidUserInputDataNoLastNameGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        noLastName = "";
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with no last name): " + "\n");
+        logger.info("First name (for user creation with no last name): " + firstName);
+        logger.info("No last name (for user creation with no last name): " + noLastName);
+        logger.info("Email address (for user creation with no last name): " + emailAddress);
+        logger.info("Address1 (for user creation with no last name): " + address1);
+        logger.info("City (for user creation with no last name): " + city);
+        logger.info("Zip code (for user creation with no last name): " + zipCode);
+        logger.info("Login name (for user creation with no last name): " + loginName);
+        logger.info("Password (for user creation with no last name): " + password);
+        logger.info("Confirm password (for user creation with no last name): " + confirmPassword);
     }
 
     //valid user data input methods
@@ -201,11 +227,18 @@ public class RegisterPage extends BasePage{
     //select 'United States' option
     public void selectUsOption(){usCountryOption.click();}
 
+    //no singular data input methods
     //invalid user data input methods (no first name)
     public void inputNoFirstNameIntoInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
         firstNameInputField.sendKeys(noFirstName);
+    }
+    //invalid user data input methods (no last name)
+    public void inputNoLastNameIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.sendKeys(noLastName);
     }
 
     //click 'Privacy policy' checkbox method
@@ -229,8 +262,9 @@ public class RegisterPage extends BasePage{
     //account confirmation message getter
     public String getAccountCreationMessage(){return accountConfirmationMessage.getText();}
 
-    //input length error message getter
-    public String getInvalidInputErrorMessage(){return inputErrorMessage.getText();}
+    //input length error message getters
+    public String getInvalidFirstNameInputErrorMessage(){return firstNameInputErrorMessage.getText();}
+    public String getInvalidLastNameInputErrorMessage(){return  lastNameInputErrorMessage.getText();}
 
     //login name / password getters
     public String getLoginName() {return loginName;}

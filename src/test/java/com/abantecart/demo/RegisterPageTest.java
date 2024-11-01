@@ -22,11 +22,25 @@ public class RegisterPageTest extends TestMethods{
     @Test
     @DisplayName("Invalid User Account Creation - No First Name")
     @Tag("Invalid_User_Account_Create")
-    void invalidAccountRegisterTest(){
+    @Tag("No_Singular_Input")
+    void invalidAccountRegisterNoFirstNameTest(){
         HomePage homePage = new HomePage(driver);
         navigateToUserSignupPageTest(homePage);
         RegisterPage registerPage = new RegisterPage(driver);
         //invalid user account creation test (no first name)
         invalidUserAccountCreationNoFirstNameTest(registerPage);
+    }
+
+    //Test 002b -> invalid user account creation test (no last name)
+    @Test
+    @DisplayName("Invalid User Account Creation - No Last Name")
+    @Tag("Invalid_User_Account_Create")
+    @Tag("No_Singular_Input")
+    void invalidAccountRegisterNoLastNameTest(){
+        HomePage homePage = new HomePage(driver);
+        navigateToUserSignupPageTest(homePage);
+        RegisterPage registerPage = new RegisterPage(driver);
+        //invalid user account creation test (no last name)
+        invalidUserAccountCreationNoLastNameTest(registerPage);
     }
 }
