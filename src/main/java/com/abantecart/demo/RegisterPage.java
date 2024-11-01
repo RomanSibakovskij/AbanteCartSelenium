@@ -24,6 +24,8 @@ public class RegisterPage extends BasePage{
     private WebElement emailInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='Address 1 must be between 3 and 128 characters!']")
     private WebElement address1InputErrorMessage;
+    @FindBy(xpath = "//div[@class='card-body']//div[@class='col-sm-9 h-100']/span[.='City must be between 3 and 128 characters!']")
+    private WebElement cityInputErrorMessage;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='lastname']")
     private WebElement lastNameInputField;
     @FindBy(xpath = "//div[@class='card-body']//input[@name='email']")
@@ -91,6 +93,7 @@ public class RegisterPage extends BasePage{
     private String noLastName;
     private String noEmailAddress;
     private String noAddress1;
+    private String noCity;
 
 
     public RegisterPage(WebDriver driver) {super(driver);}
@@ -212,6 +215,29 @@ public class RegisterPage extends BasePage{
         logger.info("Password (for user creation with no user address): " + password);
         logger.info("Confirm password (for user creation with no user address): " + confirmPassword);
     }
+    //invalid user creation input data getter (no user city)
+    public void invalidUserInputDataNoUserCityGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        noCity = "";
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with no user city): " + "\n");
+        logger.info("First name (for user creation with no user city): " + firstName);
+        logger.info("Last name (for user creation with no user city): " + lastName);
+        logger.info("Email address (for user creation with no user city): " + emailAddress);
+        logger.info("Address1 (for user creation with no user city): " + address1);
+        logger.info("No user city (for user creation with no user city): " + city);
+        logger.info("Zip code (for user creation with no user city): " + zipCode);
+        logger.info("Login name (for user creation with no user city): " + loginName);
+        logger.info("Password (for user creation with no user city): " + password);
+        logger.info("Confirm password (for user creation with no user city): " + confirmPassword);
+    }
 
     //valid user data input methods
     public void inputValidFirstNameIntoInputField(){
@@ -303,6 +329,12 @@ public class RegisterPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(address1InputField));
         address1InputField.sendKeys(noAddress1);
     }
+    //invalid user data input method (no user city))
+    public void inputNoUserCityIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(cityInputField));
+        cityInputField.sendKeys(noCity);
+    }
 
     //click 'Privacy policy' checkbox method
     public void clickPrivacyPolicyCheckbox(){
@@ -330,6 +362,7 @@ public class RegisterPage extends BasePage{
     public String getInvalidLastNameInputErrorMessage(){return  lastNameInputErrorMessage.getText();}
     public String getInvalidEmailInputErrorMessage(){return  emailInputErrorMessage.getText();}
     public String getInvalidAddress1InputErrorMessage(){return  address1InputErrorMessage.getText();}
+    public String getInvalidCityInputErrorMessage(){return  cityInputErrorMessage.getText();}
 
     //login name / password getters
     public String getLoginName() {return loginName;}
