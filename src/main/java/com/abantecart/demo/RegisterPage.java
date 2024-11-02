@@ -394,6 +394,29 @@ public class RegisterPage extends BasePage{
         logger.info("Password (for user creation with too long first name): " + password);
         logger.info("Confirm password (for user creation with too long first name): " + confirmPassword);
     }
+    //invalid user creation input data getter (too long last name)
+    public void invalidUserInputDataTooLongLastNameGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();
+        tooLongLastName = TestDataGenerator.generateRandomUsername(33);
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with too long last name): " + "\n");
+        logger.info("First name (for user creation with too long last name): " + firstName);
+        logger.info("Too long last name (for user creation with too long last name): " + tooLongLastName);
+        logger.info("Email address (for user creation with too long last name): " + emailAddress);
+        logger.info("Address1 (for user creation with too long last name): " + address1);
+        logger.info("City (for user creation with too long last name): " + city);
+        logger.info("Zip code (for user creation with too long last name): " + zipCode);
+        logger.info("Login name (for user creation with too long last name): " + loginName);
+        logger.info("Password (for user creation with too long last name): " + password);
+        logger.info("Confirm password (for user creation with too long last name): " + confirmPassword);
+    }
 
     //valid user data input methods
     public void inputValidFirstNameIntoInputField(){
@@ -440,13 +463,6 @@ public class RegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(confirmPasswordInputField));
         confirmPasswordInputField.sendKeys(password);
-    }
-
-    //valid user data input methods
-    public void inputTooLongFirstNameIntoInputField(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
-        wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
-        firstNameInputField.sendKeys(tooLongFirstName);
     }
 
     //click region dropdown menu method
@@ -525,6 +541,19 @@ public class RegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(confirmPasswordInputField));
         confirmPasswordInputField.sendKeys(noConfirmPassword);
+    }
+
+    //invalid user data input method  (too long first name)
+    public void inputTooLongFirstNameIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
+        firstNameInputField.sendKeys(tooLongFirstName);
+    }
+    //invalid user data input method  (too long last name)
+    public void inputTooLongLastNameIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.sendKeys(tooLongLastName);
     }
 
     //click 'Privacy policy' checkbox method
