@@ -594,7 +594,7 @@ public class RegisterPage extends BasePage{
 
         System.out.println("Data generated for invalid user account creation  (for user creation with too short login name): " + "\n");
         logger.info("First name (for user creation with too short login name): " + firstName);
-        logger.info("Last name (for user creation with too shorto login name): " + lastName);
+        logger.info("Last name (for user creation with too short login name): " + lastName);
         logger.info("Email address (for user creation with too short login name): " + emailAddress);
         logger.info("Address1 (for user creation with too short login name): " + address1);
         logger.info("User city (for user creation with too short login name): " + city);
@@ -602,6 +602,52 @@ public class RegisterPage extends BasePage{
         logger.info("Too short login name (for user creation with too short login name): " + tooShortLoginName);
         logger.info("Password (for user creation with too short login name): " + password);
         logger.info("Confirm password (for user creation with too short login name): " + confirmPassword);
+    }
+    //invalid user creation input data getter (too long login name)
+    public void invalidUserInputDataTooLongLoginNameGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        tooLongLoginName = TestDataGenerator.generateRandomUsername(65);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with too long login name): " + "\n");
+        logger.info("First name (for user creation with too long login name): " + firstName);
+        logger.info("Last name (for user creation with too long login name): " + lastName);
+        logger.info("Email address (for user creation with too long login name): " + emailAddress);
+        logger.info("Address1 (for user creation with too long login name): " + address1);
+        logger.info("User city (for user creation with too long login name): " + city);
+        logger.info("Zip code (for user creation with too long login name): " + zipCode);
+        logger.info("Too long login name (for user creation with too long login name): " + tooLongLoginName);
+        logger.info("Password (for user creation with too long login name): " + password);
+        logger.info("Confirm password (for user creation with too long login name): " + confirmPassword);
+    }
+    //invalid user creation input data getter (no password input)
+    public void invalidUserInputDataNoPasswordGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        noPassword = "";
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with no password): " + "\n");
+        logger.info("First name (for user creation with no password): " + firstName);
+        logger.info("Last name (for user creation with no password): " + lastName);
+        logger.info("Email address (for user creation with no password): " + emailAddress);
+        logger.info("Address1 (for user creation with no password): " + address1);
+        logger.info("User city (for user creation with no password): " + city);
+        logger.info("Zip code (for user creation with no password): " + zipCode);
+        logger.info("Login name (for user creation with no password): " + loginName);
+        logger.info("No password (for user creation with no password): " + noPassword);
+        logger.info("No confirm password (for user creation with no password): " + confirmPassword);
     }
 
     //valid user data input methods
@@ -790,6 +836,12 @@ public class RegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(loginNameInputField));
         loginNameInputField.sendKeys(tooShortLoginName);
+    }
+    //invalid user data input method (too long user login name)
+    public void inputTooLongLoginNameIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(loginNameInputField));
+        loginNameInputField.sendKeys(tooLongLoginName);
     }
 
     //click 'Privacy policy' checkbox method
