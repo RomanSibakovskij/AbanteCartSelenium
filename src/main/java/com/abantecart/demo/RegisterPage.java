@@ -135,6 +135,9 @@ public class RegisterPage extends BasePage{
     private String tooShortConfirmPassword;
     private String tooLongConfirmPassword;
 
+    //mismatching confirm password
+    private String mismatchingConfirmPassword;
+
     //invalid email format input
     private String invalidEmail;
 
@@ -674,6 +677,29 @@ public class RegisterPage extends BasePage{
         logger.info("Too long password (for user creation with too long password): " + tooShortPassword);
         logger.info("Too long confirm password (for user creation with too long password): " + tooShortConfirmPassword);
     }
+    //invalid user creation input data getter (mismatch confirm password input)
+    public void invalidUserInputDataMismatchConfirmPasswordGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        mismatchingConfirmPassword = "Stacker112$#";
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with mismatching confirm password): " + "\n");
+        logger.info("First name (for user creation with mismatching confirm password): " + firstName);
+        logger.info("Last name (for user creation with mismatching confirm password): " + lastName);
+        logger.info("Email address (for user creation with mismatching confirm password): " + emailAddress);
+        logger.info("Address1 (for user creation with mismatching confirm password): " + address1);
+        logger.info("User city (for user creation with mismatching confirm password): " + city);
+        logger.info("Zip code (for user creation with mismatching confirm password): " + zipCode);
+        logger.info("Login name (for user creation with mismatching confirm password): " + loginName);
+        logger.info("Too long password (for user creation with mismatching confirm password): " + password);
+        logger.info("Too long confirm password (for user creation with mismatching confirm password): " + mismatchingConfirmPassword);
+    }
 
     //valid user data input methods
     public void inputValidFirstNameIntoInputField(){
@@ -891,6 +917,12 @@ public class RegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(confirmPasswordInputField));
         confirmPasswordInputField.sendKeys(tooLongConfirmPassword);
+    }
+    //invalid user data input method (mismatching confirm password)
+    public void inputMismatchingConfirmPasswordIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(confirmPasswordInputField));
+        confirmPasswordInputField.sendKeys(mismatchingConfirmPassword);
     }
 
     //click 'Privacy policy' checkbox method

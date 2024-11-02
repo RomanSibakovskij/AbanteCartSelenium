@@ -344,4 +344,19 @@ public class RegisterPageTest extends TestMethods{
         //invalid user account creation test (too long user password)
         invalidUserAccountCreationTooLongPasswordTest(registerPage);
     }
+
+    //mismatching singular input test
+
+    //Test 002y -> invalid user account creation test (mismatch user confirm password)
+    @Test
+    @DisplayName("Invalid User Account Creation - Mismatch User Confirm Password")
+    @Tag("Invalid_User_Account_Create")
+    @Tag("Mismatch_Singular_Input")
+    void invalidAccountRegisterMismatchingConfirmPasswordTest(){
+        HomePage homePage = new HomePage(driver);
+        navigateToUserSignupPageTest(homePage);
+        RegisterPage registerPage = new RegisterPage(driver);
+        //invalid user account creation test (mismatch user confirm password)
+        invalidUserAccountCreationMismatchingConfirmPasswordTest(registerPage);
+    }
 }
