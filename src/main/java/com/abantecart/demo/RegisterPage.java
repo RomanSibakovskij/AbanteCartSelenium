@@ -67,6 +67,8 @@ public class RegisterPage extends BasePage{
     //Illinois state option web element
     @FindBy(xpath = "//div[@class='card-body']//select[@id='AccountFrm_zone_id']/option[@value='3635']")
     private WebElement illinoisOption;
+    @FindBy(xpath = "//div[@class='card-body']//select[@id='AccountFrm_zone_id']/option[@value='3616']")
+    private WebElement arizonaOption;
     //'Please Select' region option web element
     @FindBy(xpath = "//div[@class='card-body']//select[@id='AccountFrm_zone_id']/option[1]")
     private WebElement pleaseSelectRegionOption;
@@ -634,6 +636,8 @@ public class RegisterPage extends BasePage{
     }
     //select 'Illinois' option
     public void selectIllinoisOption(){illinoisOption.click();}
+    //select 'Arizona' option
+    public void selectArizonaOption(){arizonaOption.click();}
     //select 'Please Select' option - for no region input test
     public void selectPleaseSelectRegionOption(){pleaseSelectRegionOption.click();}
 

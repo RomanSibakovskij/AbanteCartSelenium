@@ -920,6 +920,53 @@ public class TestMethods extends BaseTest{
         }
     }
 
+    //invalid user account registration method (invalid user city region)
+    protected void invalidUserAccountCreationInvalidCityRegionTest(RegisterPage registerPage){
+        //assert the register page title matches expectations
+        assertEquals("Create Account", registerPage.getCreateAccountTitle(), "The register page title doesn't match expectations");
+        //register page web element assert
+        isRegisterPageWebElementDisplayed(registerPage);
+        HomePage homePage = new HomePage(driver);
+        //general web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //register page web element assert
+        isRegisterPageWebElementDisplayed(registerPage);
+        //valid user input data getter
+        registerPage.validUserInputDataGetter();
+        //input valid first name
+        registerPage.inputValidFirstNameIntoInputField();
+        //input valid last name
+        registerPage.inputValidLastNameIntoInputField();
+        //input valid email address
+        registerPage.inputValidEmailIntoInputField();
+        //input valid user address (address 1 - required)
+        registerPage.inputValidAddressIntoInputField();
+        //input valid user city
+        registerPage.inputValidCityIntoInputField();
+        //click region dropdown menu
+        registerPage.clickRegionDropdownMenu();
+        //select 'Arizona' state
+        registerPage.selectArizonaOption();
+        //log the invalid region selection
+        logger.info("Region selected for this particular test: Arizona");
+        //input valid zip code
+        registerPage.inputValidZipCodeIntoInputField();
+        //input valid login name
+        registerPage.inputValidLoginNameIntoInputField();
+        //input valid password
+        registerPage.inputValidPasswordIntoInputField();
+        //input valid confirmation password
+        registerPage.inputValidConfirmPasswordIntoInputField();
+        //click privacy policy checkbox (required)
+        registerPage.clickPrivacyPolicyCheckbox();
+        //click 'Continue' button (it appears after clicking privacy policy checkbox)
+        registerPage.clickContinueButton();
+        //log the issue if the account gets created
+        if (!registerPage.getAccountCreationMessage().isEmpty()) {
+            logger.error("The user account gets created despite selecting invalid city region (the application doesn't verify the input city location)");
+        }
+    }
+
     //general page web element asserts (header and footer elements)
     protected void isGeneralPageWebElementDisplayed(HomePage homePage){
         //header web elements
