@@ -1,11 +1,9 @@
 package com.abantecart.demo;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import java.util.*;
+import org.openqa.selenium.chrome.*;
+
 
 public class BaseTest {
     protected WebDriver driver;

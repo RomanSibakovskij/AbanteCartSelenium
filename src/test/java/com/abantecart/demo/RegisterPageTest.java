@@ -188,4 +188,17 @@ public class RegisterPageTest extends TestMethods{
         //invalid user account creation test (too long last name)
         invalidUserAccountCreationTooLongLastNameTest(registerPage);
     }
+
+    //Test 002n -> invalid user account creation test (invalid email address)
+    @Test
+    @DisplayName("Invalid User Account Creation - Invalid Email Address")
+    @Tag("Invalid_User_Account_Create")
+    @Tag("Invalid_Singular_Input_Format")
+    void invalidAccountRegisterInvalidEmailTest(){
+        HomePage homePage = new HomePage(driver);
+        navigateToUserSignupPageTest(homePage);
+        RegisterPage registerPage = new RegisterPage(driver);
+        //invalid user account creation test (invalid email address)
+        invalidUserAccountCreationInvalidEmailTest(registerPage);
+    }
 }

@@ -132,7 +132,7 @@ public class RegisterPage extends BasePage{
     private String tooLongPassword;
 
     //invalid email format input
-    private String invalidEmail = "m12345example.com";
+    private String invalidEmail;
 
 
     public RegisterPage(WebDriver driver) {super(driver);}
@@ -417,6 +417,29 @@ public class RegisterPage extends BasePage{
         logger.info("Password (for user creation with too long last name): " + password);
         logger.info("Confirm password (for user creation with too long last name): " + confirmPassword);
     }
+    //invalid user creation input data getter (invalid email format)
+    public void invalidUserInputDataInvalidEmailGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        invalidEmail = "m12345example.com";
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with invalid email address): " + "\n");
+        logger.info("First name (for user creation with invalid email address): " + firstName);
+        logger.info("Last name (for user creation with invalid email address): " + lastName);
+        logger.info("Invalid email address (for user creation with invalid email address): " + invalidEmail);
+        logger.info("Address1 (for user creation with invalid email address): " + address1);
+        logger.info("City (for user creation with invalid email address): " + city);
+        logger.info("Zip code (for user creation with invalid email address): " + zipCode);
+        logger.info("Login name (for user creation with invalid email address): " + loginName);
+        logger.info("Password (for user creation with invalid email address): " + password);
+        logger.info("Confirm password (for user creation with invalid email address): " + confirmPassword);
+    }
 
     //valid user data input methods
     public void inputValidFirstNameIntoInputField(){
@@ -554,6 +577,12 @@ public class RegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(lastNameInputField));
         lastNameInputField.sendKeys(tooLongLastName);
+    }
+    //invalid user data input method  (invalid email address)
+    public void inputInvalidEmailIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(emailAddressInputField));
+        emailAddressInputField.sendKeys(invalidEmail);
     }
 
     //click 'Privacy policy' checkbox method
