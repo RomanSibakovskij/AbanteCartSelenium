@@ -254,7 +254,7 @@ public class RegisterPageTest extends TestMethods{
         invalidUserAccountCreationTooLongCityTest(registerPage);
     }
 
-    //Test 002r -> invalid user account creation test (invalid user city region)
+    //Test 002r -> invalid user account creation test (invalid user city region) (the account gets created)
     @Test
     @DisplayName("Invalid User Account Creation - Invalid User City region")
     @Tag("Invalid_User_Account_Create")
@@ -291,5 +291,18 @@ public class RegisterPageTest extends TestMethods{
         RegisterPage registerPage = new RegisterPage(driver);
         //invalid user account creation test (too long user zip code)
         invalidUserAccountCreationTooLongZipCodeTest(registerPage);
+    }
+
+    //Test 002u -> invalid user account creation test (too short user login name)
+    @Test
+    @DisplayName("Invalid User Account Creation - Too Short User Login Name")
+    @Tag("Invalid_User_Account_Create")
+    @Tag("Too_Short_Singular_Input")
+    void invalidAccountRegisterTooShortLoginNameTest(){
+        HomePage homePage = new HomePage(driver);
+        navigateToUserSignupPageTest(homePage);
+        RegisterPage registerPage = new RegisterPage(driver);
+        //invalid user account creation test (too short user login name)
+        invalidUserAccountCreationTooShortLoginNameTest(registerPage);
     }
 }
