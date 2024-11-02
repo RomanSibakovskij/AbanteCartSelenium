@@ -640,7 +640,7 @@ public class RegisterPage extends BasePage{
         tooShortPassword = "TfR";
         tooShortConfirmPassword = tooShortPassword;
 
-        System.out.println("Data generated for invalid user account creation  (for user creation with too short password): " + "\n");
+        System.out.println("Data generated for invalid user account creation  (for user creation with too short password (3 chars)): " + "\n");
         logger.info("First name (for user creation with too short password): " + firstName);
         logger.info("Last name (for user creation with too short password): " + lastName);
         logger.info("Email address (for user creation with too short password): " + emailAddress);
@@ -650,6 +650,29 @@ public class RegisterPage extends BasePage{
         logger.info("Login name (for user creation with too short password): " + loginName);
         logger.info("Too short password (for user creation with too short password): " + tooShortPassword);
         logger.info("Too short confirm password (for user creation with too short password): " + tooShortConfirmPassword);
+    }
+    //invalid user creation input data getter (too long password input)
+    public void invalidUserInputDataTooLongPasswordGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        tooLongPassword = "Asdf_rgftr%55GfdtreT$";
+        tooLongConfirmPassword = tooLongPassword;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with too long password (21 chars)): " + "\n");
+        logger.info("First name (for user creation with too long password): " + firstName);
+        logger.info("Last name (for user creation with too long password): " + lastName);
+        logger.info("Email address (for user creation with too long password): " + emailAddress);
+        logger.info("Address1 (for user creation with too long password): " + address1);
+        logger.info("User city (for user creation with too long password): " + city);
+        logger.info("Zip code (for user creation with too long password): " + zipCode);
+        logger.info("Login name (for user creation with too long password): " + loginName);
+        logger.info("Too long password (for user creation with too long password): " + tooShortPassword);
+        logger.info("Too long confirm password (for user creation with too long password): " + tooShortConfirmPassword);
     }
 
     //valid user data input methods
@@ -856,6 +879,18 @@ public class RegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(confirmPasswordInputField));
         confirmPasswordInputField.sendKeys(tooShortConfirmPassword);
+    }
+    //invalid user data input method (too long user password)
+    public void inputTooLongPasswordIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(passwordInputField));
+        passwordInputField.sendKeys(tooLongPassword);
+    }
+    //invalid user data input method (too long user confirm password)
+    public void inputTooLongConfirmPasswordIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(confirmPasswordInputField));
+        confirmPasswordInputField.sendKeys(tooLongConfirmPassword);
     }
 
     //click 'Privacy policy' checkbox method
