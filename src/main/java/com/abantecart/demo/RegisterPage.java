@@ -440,6 +440,29 @@ public class RegisterPage extends BasePage{
         logger.info("Password (for user creation with invalid email address): " + password);
         logger.info("Confirm password (for user creation with invalid email address): " + confirmPassword);
     }
+    //invalid user creation input data getter (too short address1)
+    public void invalidUserInputDataTooShortUserAddressGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        tooShortAddress1 = TestDataGenerator.generateRandomInvalidAddress(2);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with too short user address): " + "\n");
+        logger.info("First name (for user creation with too short user address): " + firstName);
+        logger.info("Last name (for user creation with too short user address): " + lastName);
+        logger.info("Email address (for user creation with too short user address): " + emailAddress);
+        logger.info("Too short address1 (for user creation with too short user address): " + tooShortAddress1);
+        logger.info("City (for user creation with too short user address): " + city);
+        logger.info("Zip code (for user creation with too short user address): " + zipCode);
+        logger.info("Login name (for user creation with too short user address): " + loginName);
+        logger.info("Password (for user creation with too short user address): " + password);
+        logger.info("Confirm password (for user creation with too short user address): " + confirmPassword);
+    }
 
     //valid user data input methods
     public void inputValidFirstNameIntoInputField(){
@@ -583,6 +606,12 @@ public class RegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(emailAddressInputField));
         emailAddressInputField.sendKeys(invalidEmail);
+    }
+    //invalid user data input method (too short user address (address1))
+    public void inputTooShortUserAddressIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(address1InputField));
+        address1InputField.sendKeys(tooShortAddress1);
     }
 
     //click 'Privacy policy' checkbox method

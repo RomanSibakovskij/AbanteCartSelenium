@@ -117,6 +117,11 @@ public class TestDataGenerator extends BasePage{
         String streetType = STREET_TYPES[RANDOM.nextInt(STREET_TYPES.length)];
         return streetNumber + " " + streetName + " " + streetType;
     }
+    //generate a random invalid address with a given length for the street name
+    public static String generateRandomInvalidAddress(int length) {
+        String streetName = generateRandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", length);
+        return streetName;
+    }
     //random password generator
     public static String generateRandomPassword() {
         String numbers = "0123456789";
