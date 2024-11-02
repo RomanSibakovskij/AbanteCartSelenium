@@ -981,5 +981,6 @@ public class RegisterPage extends BasePage{
     public boolean isSubscribeToNewsletterCheckboxDisplayed(){return subscribeToNewsletterCheckbox.isDisplayed();}
     public boolean isDoNotSubscribeToNewsletterCheckboxDisplayed(){return doNotSubscribeToNewsletterCheckbox.isDisplayed();}
     public boolean isPrivacyPolicyCheckboxDisplayed(){return privacyPolicyCheckbox.isDisplayed();}
+    public boolean isContinueButtonDisplayed(){return continueButton.isDisplayed();}
 
 }

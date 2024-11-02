@@ -359,4 +359,19 @@ public class RegisterPageTest extends TestMethods{
         //invalid user account creation test (mismatch user confirm password)
         invalidUserAccountCreationMismatchingConfirmPasswordTest(registerPage);
     }
+
+    //do not click 'privacy policy' checkbox test
+
+    //Test 002z -> invalid user account creation test (do not click 'privacy policy' checkbox)
+    @Test
+    @DisplayName("Invalid User Account Creation - Do Not Click 'Privacy Policy' Checkbox")
+    @Tag("Invalid_User_Account_Create")
+    @Tag("Do_Not_Click_Singular_Required_Input")
+    void invalidAccountRegisterDoNotClickPrivacyCheckboxTest(){
+        HomePage homePage = new HomePage(driver);
+        navigateToUserSignupPageTest(homePage);
+        RegisterPage registerPage = new RegisterPage(driver);
+        //invalid user account creation test (do not click 'privacy policy' checkbox)
+        invalidUserAccountCreationDoNotClickPrivacyCheckboxTest(registerPage);
+    }
 }
