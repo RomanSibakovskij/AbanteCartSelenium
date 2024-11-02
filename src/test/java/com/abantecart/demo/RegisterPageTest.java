@@ -318,4 +318,17 @@ public class RegisterPageTest extends TestMethods{
         //invalid user account creation test (too long user login name)
         invalidUserAccountCreationTooLongLoginNameTest(registerPage);
     }
+
+    //Test 002w -> invalid user account creation test (too short user password)
+    @Test
+    @DisplayName("Invalid User Account Creation - Too Short User Password")
+    @Tag("Invalid_User_Account_Create")
+    @Tag("Too_Short_Singular_Input")
+    void invalidAccountRegisterTooShortPasswordTest(){
+        HomePage homePage = new HomePage(driver);
+        navigateToUserSignupPageTest(homePage);
+        RegisterPage registerPage = new RegisterPage(driver);
+        //invalid user account creation test (too short user password)
+        invalidUserAccountCreationTooShortPasswordTest(registerPage);
+    }
 }

@@ -132,6 +132,8 @@ public class RegisterPage extends BasePage{
     private String tooLongLoginName;
     private String tooShortPassword;
     private String tooLongPassword;
+    private String tooShortConfirmPassword;
+    private String tooLongConfirmPassword;
 
     //invalid email format input
     private String invalidEmail;
@@ -626,8 +628,8 @@ public class RegisterPage extends BasePage{
         logger.info("Password (for user creation with too long login name): " + password);
         logger.info("Confirm password (for user creation with too long login name): " + confirmPassword);
     }
-    //invalid user creation input data getter (no password input)
-    public void invalidUserInputDataNoPasswordGetter(){
+    //invalid user creation input data getter (too short password input)
+    public void invalidUserInputDataTooShortPasswordGetter(){
         firstName = TestDataGenerator.getRandomFirstName();;
         lastName = TestDataGenerator.getRandomLastName();;
         emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
@@ -635,19 +637,19 @@ public class RegisterPage extends BasePage{
         city = TestDataGenerator.getRandomCity();
         zipCode = TestDataGenerator.getRandomPostalCode();
         loginName = TestDataGenerator.generateRandomUsername(5);
-        noPassword = "";
-        confirmPassword = password;
+        tooShortPassword = "TfR";
+        tooShortConfirmPassword = tooShortPassword;
 
-        System.out.println("Data generated for invalid user account creation  (for user creation with no password): " + "\n");
-        logger.info("First name (for user creation with no password): " + firstName);
-        logger.info("Last name (for user creation with no password): " + lastName);
-        logger.info("Email address (for user creation with no password): " + emailAddress);
-        logger.info("Address1 (for user creation with no password): " + address1);
-        logger.info("User city (for user creation with no password): " + city);
-        logger.info("Zip code (for user creation with no password): " + zipCode);
-        logger.info("Login name (for user creation with no password): " + loginName);
-        logger.info("No password (for user creation with no password): " + noPassword);
-        logger.info("No confirm password (for user creation with no password): " + confirmPassword);
+        System.out.println("Data generated for invalid user account creation  (for user creation with too short password): " + "\n");
+        logger.info("First name (for user creation with too short password): " + firstName);
+        logger.info("Last name (for user creation with too short password): " + lastName);
+        logger.info("Email address (for user creation with too short password): " + emailAddress);
+        logger.info("Address1 (for user creation with too short password): " + address1);
+        logger.info("User city (for user creation with too short password): " + city);
+        logger.info("Zip code (for user creation with too short password): " + zipCode);
+        logger.info("Login name (for user creation with too short password): " + loginName);
+        logger.info("Too short password (for user creation with too short password): " + tooShortPassword);
+        logger.info("Too short confirm password (for user creation with too short password): " + tooShortConfirmPassword);
     }
 
     //valid user data input methods
@@ -842,6 +844,18 @@ public class RegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(loginNameInputField));
         loginNameInputField.sendKeys(tooLongLoginName);
+    }
+    //invalid user data input method (too short user password)
+    public void inputTooShortPasswordIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(passwordInputField));
+        passwordInputField.sendKeys(tooShortPassword);
+    }
+    //invalid user data input method (too short user confirm password)
+    public void inputTooShortConfirmPasswordIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(confirmPasswordInputField));
+        confirmPasswordInputField.sendKeys(tooShortConfirmPassword);
     }
 
     //click 'Privacy policy' checkbox method
