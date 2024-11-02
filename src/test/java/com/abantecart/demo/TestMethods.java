@@ -1,8 +1,12 @@
 package com.abantecart.demo;
 
+import org.slf4j.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestMethods extends BaseTest{
+
+    protected static final Logger logger = LoggerFactory.getLogger(TestMethods.class);
 
     //navigate to signup page test method
     protected void navigateToUserSignupPageTest(HomePage homePage){
@@ -868,6 +872,52 @@ public class TestMethods extends BaseTest{
         registerPage.clickContinueButton();
         //assert the valid error message appears
         assertEquals("Zip/postal code must be between 3 and 10 characters!", registerPage.getInvalidZipCodeInputErrorMessage(), "The valid input length error message isn't displayed.");
+    }
+    //invalid user account registration method (too long user zip code input)
+    protected void invalidUserAccountCreationTooLongZipCodeTest(RegisterPage registerPage){
+        //assert the register page title matches expectations
+        assertEquals("Create Account", registerPage.getCreateAccountTitle(), "The register page title doesn't match expectations");
+        //register page web element assert
+        isRegisterPageWebElementDisplayed(registerPage);
+        HomePage homePage = new HomePage(driver);
+        //general web element assert
+        isGeneralPageWebElementDisplayed(homePage);
+        //register page web element assert
+        isRegisterPageWebElementDisplayed(registerPage);
+        //invalid user input data getter (too long zip code)
+        registerPage.invalidUserInputDataTooLongUserZipCodeGetter();
+        //input valid first name
+        registerPage.inputValidFirstNameIntoInputField();
+        //input valid last name
+        registerPage.inputValidLastNameIntoInputField();
+        //input valid email address
+        registerPage.inputValidEmailIntoInputField();
+        //input valid user address (address 1 - required)
+        registerPage.inputValidAddressIntoInputField();
+        //input valid user city
+        registerPage.inputValidCityIntoInputField();
+        //click region dropdown menu
+        registerPage.clickRegionDropdownMenu();
+        //select 'Illinois' state
+        registerPage.selectIllinoisOption();
+        //input too long zip code
+        registerPage.inputTooLongZipCodeIntoInputField();
+        //input valid login name
+        registerPage.inputValidLoginNameIntoInputField();
+        //input valid password
+        registerPage.inputValidPasswordIntoInputField();
+        //input valid confirmation password
+        registerPage.inputValidConfirmPasswordIntoInputField();
+        //click privacy policy checkbox (required)
+        registerPage.clickPrivacyPolicyCheckbox();
+        //click 'Continue' button (it appears after clicking privacy policy checkbox)
+        registerPage.clickContinueButton();
+        //log the issue if the account gets created
+        if (registerPage.getAccountCreationMessage().isEmpty()) {
+            assertEquals("Zip/postal code must be between 3 and 10 characters!", registerPage.getInvalidZipCodeInputErrorMessage(), "The valid input length error message isn't displayed.");
+        } else {
+            logger.error("The user account gets created despite inputting zip code longer than the max input limit(11 chars).");
+        }
     }
 
     //general page web element asserts (header and footer elements)

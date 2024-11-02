@@ -555,6 +555,29 @@ public class RegisterPage extends BasePage{
         logger.info("Password (for user creation with too short user zip code): " + password);
         logger.info("Confirm password (for user creation with too short user zip code): " + confirmPassword);
     }
+    //invalid user creation input data getter (too long user zip code)
+    public void invalidUserInputDataTooLongUserZipCodeGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        tooLongZipCode = "32435432342";
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with too long user zip code): " + "\n");
+        logger.info("First name (for user creation with too long user zip code): " + firstName);
+        logger.info("Last name (for user creation with too long user zip code): " + lastName);
+        logger.info("Email address (for user creation with too long user zip code): " + emailAddress);
+        logger.info("Address1 (for user creation with too long user zip code): " + address1);
+        logger.info("User city (for user creation with too long user zip code): " + city);
+        logger.info("Too long zip code (for user creation with too long user zip code): " + tooLongZipCode);
+        logger.info("Login name (for user creation with too long user zip code): " + loginName);
+        logger.info("Password (for user creation with too long user zip code): " + password);
+        logger.info("Confirm password (for user creation with too long user zip code): " + confirmPassword);
+    }
 
     //valid user data input methods
     public void inputValidFirstNameIntoInputField(){
@@ -728,6 +751,12 @@ public class RegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(zipCodeInputField));
         zipCodeInputField.sendKeys(tooShortZipCode);
+    }
+    //invalid user data input method (too long user zip code)
+    public void inputTooLongZipCodeIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(zipCodeInputField));
+        zipCodeInputField.sendKeys(tooLongZipCode);
     }
 
     //click 'Privacy policy' checkbox method
