@@ -117,6 +117,23 @@ public class RegisterPage extends BasePage{
     private String noPassword;
     private String noConfirmPassword;
 
+    //too short / too long singular input
+    private String tooLongFirstName;
+    private String tooLongLastName;
+    private String tooShortAddress1;
+    private String tooLongAddress1;
+    private String tooShortCity;
+    private String tooLongCity;
+    private String tooShortZipCode;
+    private String tooLongZipCode;
+    private String tooShortLoginName;
+    private String tooLongLoginName;
+    private String tooShortPassword;
+    private String tooLongPassword;
+
+    //invalid email format input
+    private String invalidEmail = "m12345example.com";
+
 
     public RegisterPage(WebDriver driver) {super(driver);}
 
@@ -353,6 +370,31 @@ public class RegisterPage extends BasePage{
         logger.info("No confirm password (for user creation with no confirm password): " + noConfirmPassword);
     }
 
+    //invalid singular input (too short/too long)
+    //invalid user creation input data getter (too long first name)
+    public void invalidUserInputDataTooLongFirstNameGetter(){
+        tooLongFirstName = TestDataGenerator.generateRandomUsername(33);
+        lastName = TestDataGenerator.getRandomLastName();
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        city = TestDataGenerator.getRandomCity();
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with too long first name): " + "\n");
+        logger.info("Too long first name (for user creation with too long first name): " + tooLongFirstName);
+        logger.info("Last name (for user creation with too long first name): " + lastName);
+        logger.info("Email address (for user creation with too long first name): " + emailAddress);
+        logger.info("Address1 (for user creation with too long first name): " + address1);
+        logger.info("City (for user creation with too long first name): " + city);
+        logger.info("Zip code (for user creation with too long first name): " + zipCode);
+        logger.info("Login name (for user creation with too long first name): " + loginName);
+        logger.info("Password (for user creation with too long first name): " + password);
+        logger.info("Confirm password (for user creation with too long first name): " + confirmPassword);
+    }
+
     //valid user data input methods
     public void inputValidFirstNameIntoInputField(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
@@ -398,6 +440,13 @@ public class RegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(confirmPasswordInputField));
         confirmPasswordInputField.sendKeys(password);
+    }
+
+    //valid user data input methods
+    public void inputTooLongFirstNameIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(firstNameInputField));
+        firstNameInputField.sendKeys(tooLongFirstName);
     }
 
     //click region dropdown menu method
