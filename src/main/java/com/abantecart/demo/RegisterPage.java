@@ -509,6 +509,29 @@ public class RegisterPage extends BasePage{
         logger.info("Password (for user creation with too short user city): " + password);
         logger.info("Confirm password (for user creation with too short user city): " + confirmPassword);
     }
+    //invalid user creation input data getter (too long user city)
+    public void invalidUserInputDataTooLongUserCityGetter(){
+        firstName = TestDataGenerator.getRandomFirstName();;
+        lastName = TestDataGenerator.getRandomLastName();;
+        emailAddress = TestDataGenerator.generateRandomEmailAddress(5);
+        address1 = TestDataGenerator.generateRandomAddress(6);
+        tooLongCity = TestDataGenerator.generateRandomUsername(129);
+        zipCode = TestDataGenerator.getRandomPostalCode();
+        loginName = TestDataGenerator.generateRandomUsername(5);
+        password = TestDataGenerator.generateRandomPassword();
+        confirmPassword = password;
+
+        System.out.println("Data generated for invalid user account creation  (for user creation with too long user city): " + "\n");
+        logger.info("First name (for user creation with too long user city): " + firstName);
+        logger.info("Last name (for user creation with too long user city): " + lastName);
+        logger.info("Email address (for user creation with too long user city): " + emailAddress);
+        logger.info("Address1 (for user creation with too long user city): " + address1);
+        logger.info("Too long user city (for user creation with too long user city): " + tooLongCity);
+        logger.info("Zip code (for user creation with too long user city): " + zipCode);
+        logger.info("Login name (for user creation with too long user city): " + loginName);
+        logger.info("Password (for user creation with too long user city): " + password);
+        logger.info("Confirm password (for user creation with too long user city): " + confirmPassword);
+    }
 
     //valid user data input methods
     public void inputValidFirstNameIntoInputField(){
@@ -670,6 +693,12 @@ public class RegisterPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
         wait.until(ExpectedConditions.visibilityOf(cityInputField));
         cityInputField.sendKeys(tooShortCity);
+    }
+    //invalid user data input method (too long user city)
+    public void inputTooLongUserCityIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOf(cityInputField));
+        cityInputField.sendKeys(tooLongCity);
     }
 
     //click 'Privacy policy' checkbox method
