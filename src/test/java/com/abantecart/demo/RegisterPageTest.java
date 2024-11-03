@@ -241,7 +241,7 @@ public class RegisterPageTest extends TestMethods{
         invalidUserAccountCreationTooShortCityTest(registerPage);
     }
 
-    //Test 002q -> invalid user account creation test (too long user city)
+    //Test 002r -> invalid user account creation test (too long user city)
     @Test
     @DisplayName("Invalid User Account Creation - Too Long User City")
     @Tag("Invalid_User_Account_Create")
@@ -254,7 +254,7 @@ public class RegisterPageTest extends TestMethods{
         invalidUserAccountCreationTooLongCityTest(registerPage);
     }
 
-    //Test 002r -> invalid user account creation test (invalid user city region) (the account gets created)
+    //Test 002s -> invalid user account creation test (invalid user city region) (the account gets created)
     @Test
     @DisplayName("Invalid User Account Creation - Invalid User City region")
     @Tag("Invalid_User_Account_Create")
@@ -267,7 +267,7 @@ public class RegisterPageTest extends TestMethods{
         invalidUserAccountCreationInvalidCityRegionTest(registerPage);
     }
 
-    //Test 002s -> invalid user account creation test (too short user zip code)
+    //Test 002t -> invalid user account creation test (too short user zip code)
     @Test
     @DisplayName("Invalid User Account Creation - Too Short User Zip Code")
     @Tag("Invalid_User_Account_Create")
@@ -280,7 +280,7 @@ public class RegisterPageTest extends TestMethods{
         invalidUserAccountCreationTooShortZipCodeTest(registerPage);
     }
 
-    //Test 002t -> invalid user account creation test (too long user zip code) (the account gets created)
+    //Test 002u -> invalid user account creation test (too long user zip code) (the account gets created)
     @Test
     @DisplayName("Invalid User Account Creation - Too Long User Zip Code")
     @Tag("Invalid_User_Account_Create")
@@ -293,7 +293,7 @@ public class RegisterPageTest extends TestMethods{
         invalidUserAccountCreationTooLongZipCodeTest(registerPage);
     }
 
-    //Test 002u -> invalid user account creation test (too short user login name)
+    //Test 002v -> invalid user account creation test (too short user login name)
     @Test
     @DisplayName("Invalid User Account Creation - Too Short User Login Name")
     @Tag("Invalid_User_Account_Create")
@@ -306,7 +306,7 @@ public class RegisterPageTest extends TestMethods{
         invalidUserAccountCreationTooShortLoginNameTest(registerPage);
     }
 
-    //Test 002v -> invalid user account creation test (too long user login name)
+    //Test 002w -> invalid user account creation test (too long user login name)
     @Test
     @DisplayName("Invalid User Account Creation - Too Long User Login Name")
     @Tag("Invalid_User_Account_Create")
@@ -319,7 +319,7 @@ public class RegisterPageTest extends TestMethods{
         invalidUserAccountCreationTooLongLoginNameTest(registerPage);
     }
 
-    //Test 002w -> invalid user account creation test (too short user password)
+    //Test 002x -> invalid user account creation test (too short user password)
     @Test
     @DisplayName("Invalid User Account Creation - Too Short User Password")
     @Tag("Invalid_User_Account_Create")
@@ -332,7 +332,7 @@ public class RegisterPageTest extends TestMethods{
         invalidUserAccountCreationTooShortPasswordTest(registerPage);
     }
 
-    //Test 002x -> invalid user account creation test (too long user password)
+    //Test 002y -> invalid user account creation test (too long user password)
     @Test
     @DisplayName("Invalid User Account Creation - Too Long User Password")
     @Tag("Invalid_User_Account_Create")
@@ -347,7 +347,7 @@ public class RegisterPageTest extends TestMethods{
 
     //mismatching singular input test
 
-    //Test 002y -> invalid user account creation test (mismatch user confirm password)
+    //Test 002z -> invalid user account creation test (mismatch user confirm password)
     @Test
     @DisplayName("Invalid User Account Creation - Mismatch User Confirm Password")
     @Tag("Invalid_User_Account_Create")
@@ -362,7 +362,7 @@ public class RegisterPageTest extends TestMethods{
 
     //do not click 'privacy policy' checkbox test
 
-    //Test 002z -> invalid user account creation test (do not click 'privacy policy' checkbox)
+    //Test 002aa -> invalid user account creation test (do not click 'privacy policy' checkbox)
     @Test
     @DisplayName("Invalid User Account Creation - Do Not Click 'Privacy Policy' Checkbox")
     @Tag("Invalid_User_Account_Create")
