@@ -1319,7 +1319,24 @@ public class TestMethods extends BaseTest{
         //assert the user hasn't logged in (hasn't got onto 'My Account' page - is still on register/login dashboard page)
         assertEquals("Returning Customer",registerLoginDashboardPage.getLoginCardSectionTitle(), "The user has logged in despite missing login name input");
     }
-
+    //invalid login test method (invalid password)
+    protected void invalidUserLoginInvalidPasswordTest(RegisterPage registerPage){
+        RegisterLoginDashboardPage registerLoginDashboardPage = new RegisterLoginDashboardPage(driver);
+        //assert the login card section title has the correct text
+        assertEquals("Returning Customer", registerLoginDashboardPage.getLoginCardSectionTitle(), "The login card section title doesn't match expectations");
+        //invalid user login input data getter (invalid login name)
+        registerLoginDashboardPage.invalidLoginUserDataInvalidPasswordGetter(registerPage);
+        //input valid login name
+        registerLoginDashboardPage.inputValidLoginIntoInputField();
+        //input invalid password
+        registerLoginDashboardPage.inputInvalidPasswordIntoInputField();
+        //click 'Continue' (login) button
+        registerLoginDashboardPage.clickLoginCardButton();
+        //assert the expected login input error message displayed
+        assertEquals("Error: Incorrect login or password provided.",registerLoginDashboardPage.getLoginInputErrorMessage(), "The login input error message doesn't match expectations");
+        //assert the user hasn't logged in (hasn't got onto 'My Account' page - is still on register/login dashboard page)
+        assertEquals("Returning Customer",registerLoginDashboardPage.getLoginCardSectionTitle(), "The user has logged in despite missing login name input");
+    }
 
     //general page web element asserts (header and footer elements)
     protected void isGeneralPageWebElementDisplayed(HomePage homePage){

@@ -98,4 +98,24 @@ public class RegisterLoginDashboardPageTest extends TestMethods{
         //invalid user login test (invalid login name)
         invalidUserLoginInvalidLoginNameTest(registerPage);
     }
+
+    //Test 004d -> invalid user account login - invalid password
+    @Test
+    @DisplayName("Invalid User Account Login - Invalid Password")
+    @Tag("Invalid_User_Account_Login")
+    @Tag("Invalid_Singular_Input")
+    void invalidAccountLoginInvalidPasswordTest(){
+        HomePage homePage = new HomePage(driver);
+        navigateToUserSignupPageTest(homePage);
+        RegisterPage registerPage = new RegisterPage(driver);
+        //valid user account creation test
+        validUserAccountCreationTest(registerPage);
+        AccountPage accountPage = new AccountPage(driver);
+        //logout from user account test
+        logOutFromAccountTest(accountPage);
+        //navigate to register/login dashboard page
+        navigateToRegisterLoginDashboardPageTest(homePage);
+        //invalid user login test (invalid password)
+        invalidUserLoginInvalidPasswordTest(registerPage);
+    }
 }

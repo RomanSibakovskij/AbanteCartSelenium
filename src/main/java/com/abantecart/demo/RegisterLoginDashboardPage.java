@@ -120,6 +120,21 @@ public class RegisterLoginDashboardPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(loginCardLoginNameInputField));
         loginCardLoginNameInputField.sendKeys(invalidLoginName);
     }
+    //invalid login user input data getter - invalid password
+    public void invalidLoginUserDataInvalidPasswordGetter(RegisterPage registerPage){
+        loginName = registerPage.getLoginName();
+        invalidPassword = "Stacker112_#";
+
+        System.out.println("Invalid login data (invalid password); " + "\n");
+        logger.info("Valid login name (invalid password): " + loginName);
+        logger.info("Invalid login password (invalid password): " + invalidPassword);
+    }
+    //invalid input data method - no password
+    public void inputInvalidPasswordIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(475));
+        wait.until(ExpectedConditions.visibilityOf(loginCardPasswordInputField));
+        loginCardPasswordInputField.sendKeys(invalidPassword);
+    }
 
     //register/login dashboard page title getter
     public String getRegisterLoginDashboardPageTitle() {return registerLoginDashboardPageTitle.getText();}
