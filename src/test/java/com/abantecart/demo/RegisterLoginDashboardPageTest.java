@@ -20,7 +20,6 @@ public class RegisterLoginDashboardPageTest extends TestMethods{
     }
 
     //Test 004 -> valid user account login
-    //Test 003 -> valid user account logout test
     @Test
     @DisplayName("Valid User Account Login")
     @Tag("Valid_User_Account_Login")
@@ -34,7 +33,8 @@ public class RegisterLoginDashboardPageTest extends TestMethods{
         //logout from user account test
         logOutFromAccountTest(accountPage);
         //navigate to register/login dashboard page
-        navigateToUserSignupPageTest(homePage);
-
+        navigateToRegisterLoginDashboardPageTest(homePage);
+        //valid user login test
+        validUserLoginTest(registerPage);
     }
 }

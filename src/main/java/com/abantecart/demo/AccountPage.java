@@ -16,6 +16,13 @@ public class AccountPage extends BasePage{
     @FindBy(xpath = "//a[@title='Continue']")
     private WebElement continueButton;
 
+    //my account title web element
+    @FindBy(xpath = "//div[@class='col-xl-8']/h1")
+    private WebElement myAccountTitle;
+    //user account name web element
+    @FindBy(xpath = "//div[@class='content-main-section']//h4")
+    private WebElement userAccountFirstName;
+
     public AccountPage(WebDriver driver) {super(driver);}
 
     //logoff link click method
@@ -30,6 +37,11 @@ public class AccountPage extends BasePage{
         wait.until(ExpectedConditions.elementToBeClickable(continueButton));
         continueButton.click();
     }
+
+    //my account title getter
+    public String getMyAccountTitle() {return myAccountTitle.getText();}
+    //user first name getter
+    public String getUserFirstName() {return userAccountFirstName.getText();}
 
     //account page web element assert methods
     public boolean isLogOffLinkDisplayed() {return logOffLink.isDisplayed();}

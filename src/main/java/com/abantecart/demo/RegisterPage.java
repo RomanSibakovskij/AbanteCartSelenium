@@ -963,6 +963,9 @@ public class RegisterPage extends BasePage{
     public String getLoginName() {return loginName;}
     public String getPassword() {return password;}
 
+    //first name getter
+    public String getFirstName(){return firstName;}
+
     //register page web element asser methods
     public boolean isFirstNameInputFieldDisplayed(){return firstNameInputField.isDisplayed();}
     public boolean isLastNameInputFieldDisplayed(){return lastNameInputField.isDisplayed();}

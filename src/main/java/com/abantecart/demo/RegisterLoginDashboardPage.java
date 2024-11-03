@@ -22,7 +22,7 @@ public class RegisterLoginDashboardPage extends BasePage {
     private WebElement loginCardSectionTitle;
     @FindBy(xpath = "//div[@class='row']/div[2]/div/div[@class='card-body']//fieldset//input[@id='loginFrm_loginname']")
     private WebElement loginCardLoginNameInputField;
-    @FindBy(xpath = "//div[@class='row']/div[2]/div/div[@class='card-body']/fieldset//input[@id='loginFrm_password']")
+    @FindBy(xpath = "//div[@class='row']/div[2]/div/div[@class='card-body']//fieldset//input[@id='loginFrm_password']")
     private WebElement loginCardPasswordInputField;
     @FindBy(xpath = "//div[@id='rescue_links me-2 d-flex align-items-start']/a[2]")
     private WebElement loginCardForgotLoginLink;
@@ -31,8 +31,32 @@ public class RegisterLoginDashboardPage extends BasePage {
     @FindBy(xpath = "//div[@class='row']/div[2]/div/div[@class='card-body']//fieldset//button[@type='submit']")
     private WebElement loginCardButton;
 
-    public RegisterLoginDashboardPage(WebDriver driver) {
-        super(driver);
+    //valid login data
+    private String loginName;
+    private String password;
+
+    public RegisterLoginDashboardPage(WebDriver driver) {super(driver);}
+
+    //valid login user input data getter
+    public void validLoginUserDataGetter(RegisterPage registerPage){
+        loginName = registerPage.getLoginName();
+        password = registerPage.getPassword();
+
+        System.out.println("Valid login data ; " + "\n");
+        logger.info("Valid login name: " + loginName);
+        logger.info("Valid login password: " + password);
+    }
+
+    //valid input data methods
+    public void inputValidLoginIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(475));
+        wait.until(ExpectedConditions.visibilityOf(loginCardLoginNameInputField));
+        loginCardLoginNameInputField.sendKeys(loginName);
+    }
+    public void inputValidPasswordIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(475));
+        wait.until(ExpectedConditions.visibilityOf(loginCardPasswordInputField));
+        loginCardPasswordInputField.sendKeys(password);
     }
 
     //register/login dashboard page title getter
@@ -45,6 +69,16 @@ public class RegisterLoginDashboardPage extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(445));
         wait.until(ExpectedConditions.elementToBeClickable(registerCardButton));
         registerCardButton.click();
+    }
+
+    //login card section card title getter
+    public String getLoginCardSectionTitle(){return loginCardSectionTitle.getText();}
+
+    //register card button click method
+    public void clickLoginCardButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(445));
+        wait.until(ExpectedConditions.elementToBeClickable(loginCardButton));
+        loginCardButton.click();
     }
 
     //register/login page web element assert methods
