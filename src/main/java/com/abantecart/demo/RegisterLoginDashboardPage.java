@@ -17,6 +17,20 @@ public class RegisterLoginDashboardPage extends BasePage {
     @FindBy(xpath = "//div[@class='row']/div[1]/div/div[@class='card-body']/form//button")
     private WebElement registerCardButton;
 
+    //login section web elements
+    @FindBy(xpath = "//div[@class='row']/div[2]/div/div[@class='card-body']/h4")
+    private WebElement loginCardSectionTitle;
+    @FindBy(xpath = "//div[@class='row']/div[2]/div/div[@class='card-body']//fieldset//input[@id='loginFrm_loginname']")
+    private WebElement loginCardLoginNameInputField;
+    @FindBy(xpath = "//div[@class='row']/div[2]/div/div[@class='card-body']/fieldset//input[@id='loginFrm_password']")
+    private WebElement loginCardPasswordInputField;
+    @FindBy(xpath = "//div[@id='rescue_links me-2 d-flex align-items-start']/a[2]")
+    private WebElement loginCardForgotLoginLink;
+    @FindBy(xpath = "//div[@id='rescue_links me-2 d-flex align-items-start']/a[1]")
+    private WebElement loginCardForgotPasswordLink;
+    @FindBy(xpath = "//div[@class='row']/div[2]/div/div[@class='card-body']//fieldset//button[@type='submit']")
+    private WebElement loginCardButton;
+
     public RegisterLoginDashboardPage(WebDriver driver) {
         super(driver);
     }
@@ -37,5 +51,11 @@ public class RegisterLoginDashboardPage extends BasePage {
     public boolean isRegisterLoginDashboardPageTitleDisplayed() {return registerLoginDashboardPageTitle.isDisplayed();}
     public boolean isRegisterCardSectionTitleDisplayed() {return registerCardSectionTitle.isDisplayed();}
     public boolean isRegisterCardButtonDisplayed() {return registerCardButton.isDisplayed();}
+    public boolean isLoginCardSectionTitleDisplayed() {return loginCardSectionTitle.isDisplayed();}
+    public boolean isLoginCardButtonDisplayed() {return loginCardButton.isDisplayed();}
+    public boolean isLoginCardForgotLoginLinkDisplayed() {return loginCardForgotLoginLink.isDisplayed();}
+    public boolean isLoginCardForgotPasswordLinkDisplayed() {return loginCardForgotPasswordLink.isDisplayed();}
+    public boolean isLoginCardLoginNameInputFieldDisplayed() {return loginCardLoginNameInputField.isDisplayed();}
+    public boolean isLoginCardPasswordInputFieldDisplayed() {return loginCardPasswordInputField.isDisplayed();}
 
 }
