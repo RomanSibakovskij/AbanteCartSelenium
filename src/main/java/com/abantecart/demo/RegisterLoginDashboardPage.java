@@ -31,6 +31,10 @@ public class RegisterLoginDashboardPage extends BasePage {
     @FindBy(xpath = "//div[@class='row']/div[2]/div/div[@class='card-body']//fieldset//button[@type='submit']")
     private WebElement loginCardButton;
 
+    //login input error message web element
+    @FindBy(xpath = "//div[@role='alert']")
+    private WebElement loginInputErrorMessage;
+
     //valid login data
     private String loginName;
     private String password;
@@ -38,6 +42,10 @@ public class RegisterLoginDashboardPage extends BasePage {
     //no singular input
     private String noLoginName;
     private String noPassword;
+
+    //invalid singular input
+    private String invalidLoginName;
+    private String invalidPassword;
 
     public RegisterLoginDashboardPage(WebDriver driver) {super(driver);}
 
@@ -96,6 +104,23 @@ public class RegisterLoginDashboardPage extends BasePage {
         loginCardPasswordInputField.sendKeys(noPassword);
     }
 
+    //invalid singular input
+    //invalid login user input data getter - in login name
+    public void invalidLoginUserDataInvalidLoginNameGetter(RegisterPage registerPage){
+        invalidLoginName = "Inv_453";
+        password = registerPage.getPassword();
+
+        System.out.println("Invalid login data (invalid login name); " + "\n");
+        logger.info("Invalid login name (invalid login name): " + invalidLoginName);
+        logger.info("Valid login password (invalid login name): " + password);
+    }
+    //invalid input data method - invalid login name
+    public void inputInvalidLoginNameIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(475));
+        wait.until(ExpectedConditions.visibilityOf(loginCardLoginNameInputField));
+        loginCardLoginNameInputField.sendKeys(invalidLoginName);
+    }
+
     //register/login dashboard page title getter
     public String getRegisterLoginDashboardPageTitle() {return registerLoginDashboardPageTitle.getText();}
     //register card section title getter
@@ -110,6 +135,9 @@ public class RegisterLoginDashboardPage extends BasePage {
 
     //login card section card title getter
     public String getLoginCardSectionTitle(){return loginCardSectionTitle.getText();}
+
+    //login input error message getter
+    public String getLoginInputErrorMessage(){return loginInputErrorMessage.getText();}
 
     //register card button click method
     public void clickLoginCardButton() {
