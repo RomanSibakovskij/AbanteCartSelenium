@@ -41,7 +41,7 @@ public class RegisterLoginDashboardPageTest extends TestMethods{
 
     //Test 004a -> invalid user account login - no login name
     @Test
-    @DisplayName("Invalid User Account Login - No login Name")
+    @DisplayName("Invalid User Account Login - No Login Name")
     @Tag("Invalid_User_Account_Login")
     @Tag("No_Singular_Input")
     void invalidAccountLoginNoLoginNameTest(){
@@ -57,5 +57,25 @@ public class RegisterLoginDashboardPageTest extends TestMethods{
         navigateToRegisterLoginDashboardPageTest(homePage);
         //invalid user login test (no login name)
         invalidUserLoginNoLoginNameTest(registerPage);
+    }
+
+    //Test 004b -> invalid user account login - no password
+    @Test
+    @DisplayName("Invalid User Account Login - No Password")
+    @Tag("Invalid_User_Account_Login")
+    @Tag("No_Singular_Input")
+    void invalidAccountLoginNoPasswordTest(){
+        HomePage homePage = new HomePage(driver);
+        navigateToUserSignupPageTest(homePage);
+        RegisterPage registerPage = new RegisterPage(driver);
+        //valid user account creation test
+        validUserAccountCreationTest(registerPage);
+        AccountPage accountPage = new AccountPage(driver);
+        //logout from user account test
+        logOutFromAccountTest(accountPage);
+        //navigate to register/login dashboard page
+        navigateToRegisterLoginDashboardPageTest(homePage);
+        //invalid user login test (no password)
+        invalidUserLoginNoPasswordTest(registerPage);
     }
 }

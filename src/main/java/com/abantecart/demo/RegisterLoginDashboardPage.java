@@ -80,6 +80,22 @@ public class RegisterLoginDashboardPage extends BasePage {
         loginCardLoginNameInputField.sendKeys(noLoginName);
     }
 
+    //invalid login user input data getter - no password
+    public void invalidLoginUserDataNoPasswordGetter(RegisterPage registerPage){
+        loginName = registerPage.getLoginName();
+        noPassword = "";
+
+        System.out.println("Invalid login data (no password); " + "\n");
+        logger.info("Valid login name (no password): " + loginName);
+        logger.info("No login password (no password): " + noPassword);
+    }
+    //invalid input data method - no password
+    public void inputNoPasswordIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(475));
+        wait.until(ExpectedConditions.visibilityOf(loginCardPasswordInputField));
+        loginCardPasswordInputField.sendKeys(noPassword);
+    }
+
     //register/login dashboard page title getter
     public String getRegisterLoginDashboardPageTitle() {return registerLoginDashboardPageTitle.getText();}
     //register card section title getter
