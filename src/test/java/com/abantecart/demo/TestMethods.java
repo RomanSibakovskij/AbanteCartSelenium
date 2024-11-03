@@ -1269,6 +1269,24 @@ public class TestMethods extends BaseTest{
         //assert the user has logged into owned account
         assertEquals(registerPage.getFirstName(), accountPage.getUserFirstName(), "The user first names don't match");
     }
+    //invalid login test method (no login name)
+    protected void invalidUserLoginNoLoginNameTest(RegisterPage registerPage){
+        RegisterLoginDashboardPage registerLoginDashboardPage = new RegisterLoginDashboardPage(driver);
+        //assert the login card section title has the correct text
+        assertEquals("Returning Customer", registerLoginDashboardPage.getLoginCardSectionTitle(), "The login card section title doesn't match expectations");
+        //invalid user login input data getter (no login name)
+        registerLoginDashboardPage.invalidLoginUserDataNoLoginNameGetter(registerPage);
+        //do not input login name
+        registerLoginDashboardPage.inputNoLoginNameIntoInputField();
+        //input valid password
+        registerLoginDashboardPage.inputValidPasswordIntoInputField();
+        //click 'Continue' (login) button
+        registerLoginDashboardPage.clickLoginCardButton();
+        AccountPage accountPage = new AccountPage(driver);
+        //assert the user hasn't logged in (hasn't got onto 'My Account' page - is still on register/login dashboard page)
+        assertEquals("Returning Customer",registerLoginDashboardPage.getLoginCardSectionTitle(), "The user has logged in despite missing login name input");
+    }
+
 
     //general page web element asserts (header and footer elements)
     protected void isGeneralPageWebElementDisplayed(HomePage homePage){

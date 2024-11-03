@@ -35,6 +35,10 @@ public class RegisterLoginDashboardPage extends BasePage {
     private String loginName;
     private String password;
 
+    //no singular input
+    private String noLoginName;
+    private String noPassword;
+
     public RegisterLoginDashboardPage(WebDriver driver) {super(driver);}
 
     //valid login user input data getter
@@ -57,6 +61,23 @@ public class RegisterLoginDashboardPage extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(475));
         wait.until(ExpectedConditions.visibilityOf(loginCardPasswordInputField));
         loginCardPasswordInputField.sendKeys(password);
+    }
+
+    //no singular input
+    //invalid login user input data getter - no login name
+    public void invalidLoginUserDataNoLoginNameGetter(RegisterPage registerPage){
+        noLoginName = "";
+        password = registerPage.getPassword();
+
+        System.out.println("Invalid login data (no login name); " + "\n");
+        logger.info("No login name (no login name): " + noLoginName);
+        logger.info("Valid login password (no login name): " + password);
+    }
+    //invalid input data method - no login name
+    public void inputNoLoginNameIntoInputField(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(475));
+        wait.until(ExpectedConditions.visibilityOf(loginCardLoginNameInputField));
+        loginCardLoginNameInputField.sendKeys(noLoginName);
     }
 
     //register/login dashboard page title getter

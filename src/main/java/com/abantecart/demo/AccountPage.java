@@ -45,6 +45,4 @@ public class AccountPage extends BasePage{
 
     //account page web element assert methods
     public boolean isLogOffLinkDisplayed() {return logOffLink.isDisplayed();}
-
-
 }
