@@ -35,7 +35,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.25.0</version>
+            <version>4.26.0</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -65,7 +65,7 @@
                         <include>**/*Test.java</include>
                         <include>**/*Tests.java</include>
                     </includes>
-                    <testSourceDirectory>src/test/java/lt/techin/example</testSourceDirectory>
+                    <testSourceDirectory>src/test/java/com/abantecart/demo</testSourceDirectory>
                 </configuration>
             </plugin>
         </plugins>
