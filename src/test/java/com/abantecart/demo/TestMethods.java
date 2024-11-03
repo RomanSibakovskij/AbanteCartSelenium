@@ -1216,6 +1216,21 @@ public class TestMethods extends BaseTest{
         logger.info("The continue button isn't displayed without prior 'Privacy Policy' checkbox selection as expected. Test has passed.");
     }
 
+    //login / logout test methods
+
+    //logout test method
+    protected void logOutFromAccountTest(AccountPage accountPage){
+        //account page web element assert
+        isAccountPageWebElementDisplayed(accountPage);
+        //click 'Logoff' link
+        accountPage.clickLogOffLink();
+        //click 'Continue' button
+        accountPage.clickContinueButton();
+        HomePage homePage = new HomePage(driver);
+        //assert the user has returned to homepage
+        assertEquals("Welcome to AbanteCart demo web store!", homePage.getAbanteCartTitle(), "The abante cart title doesn't match expected result");
+    }
+
     //general page web element asserts (header and footer elements)
     protected void isGeneralPageWebElementDisplayed(HomePage homePage){
         //header web elements
@@ -1417,6 +1432,12 @@ public class TestMethods extends BaseTest{
         assertTrue(registerPage.isDoNotSubscribeToNewsletterCheckboxDisplayed(), "The 'do not subscribe to newsletter' checkbox isn't displayed");
         //assert 'privacy policy' checkbox is displayed
         assertTrue(registerPage.isPrivacyPolicyCheckboxDisplayed(), "The 'privacy policy' checkbox isn't displayed");
+    }
+
+    //account page web element assert
+    protected void isAccountPageWebElementDisplayed(AccountPage accountPage){
+        //assert logoff link is displayed
+        assertTrue(accountPage.isLogOffLinkDisplayed(), "The logoff link isn't displayed");
     }
 
 }
